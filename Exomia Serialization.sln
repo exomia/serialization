@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exomia Serialization", "Exomia Serialization\Exomia Serialization.csproj", "{47361845-E9FC-4C08-B803-730F73343AC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exomia.Serialization.Test", "Exomia.Serialization.Test\Exomia.Serialization.Test.csproj", "{79A3F841-EF5C-4D7A-8E20-BE57776971C5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{47361845-E9FC-4C08-B803-730F73343AC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47361845-E9FC-4C08-B803-730F73343AC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47361845-E9FC-4C08-B803-730F73343AC3}.Debug|x64.ActiveCfg = Debug|x64
+		{47361845-E9FC-4C08-B803-730F73343AC3}.Debug|x64.Build.0 = Debug|x64
+		{47361845-E9FC-4C08-B803-730F73343AC3}.Debug|x86.ActiveCfg = Debug|x86
+		{47361845-E9FC-4C08-B803-730F73343AC3}.Debug|x86.Build.0 = Debug|x86
+		{47361845-E9FC-4C08-B803-730F73343AC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47361845-E9FC-4C08-B803-730F73343AC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47361845-E9FC-4C08-B803-730F73343AC3}.Release|x64.ActiveCfg = Release|x64
+		{47361845-E9FC-4C08-B803-730F73343AC3}.Release|x64.Build.0 = Release|x64
+		{47361845-E9FC-4C08-B803-730F73343AC3}.Release|x86.ActiveCfg = Release|x86
+		{47361845-E9FC-4C08-B803-730F73343AC3}.Release|x86.Build.0 = Release|x86
+		{79A3F841-EF5C-4D7A-8E20-BE57776971C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79A3F841-EF5C-4D7A-8E20-BE57776971C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79A3F841-EF5C-4D7A-8E20-BE57776971C5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{79A3F841-EF5C-4D7A-8E20-BE57776971C5}.Debug|x64.Build.0 = Debug|Any CPU
+		{79A3F841-EF5C-4D7A-8E20-BE57776971C5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{79A3F841-EF5C-4D7A-8E20-BE57776971C5}.Debug|x86.Build.0 = Debug|Any CPU
+		{79A3F841-EF5C-4D7A-8E20-BE57776971C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79A3F841-EF5C-4D7A-8E20-BE57776971C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79A3F841-EF5C-4D7A-8E20-BE57776971C5}.Release|x64.ActiveCfg = Release|Any CPU
+		{79A3F841-EF5C-4D7A-8E20-BE57776971C5}.Release|x64.Build.0 = Release|Any CPU
+		{79A3F841-EF5C-4D7A-8E20-BE57776971C5}.Release|x86.ActiveCfg = Release|Any CPU
+		{79A3F841-EF5C-4D7A-8E20-BE57776971C5}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {142D8604-F242-46BD-8DC9-572F5F24DA6E}
+	EndGlobalSection
+EndGlobal
