@@ -99,7 +99,7 @@ namespace Exomia.Serialization.Utils
             {
                 MemCpy(dst, src + offset + 4, length * 4);
             }
-            byteSize = length;
+            byteSize = length * 4;
             return buffer;
         }
 
@@ -135,7 +135,7 @@ namespace Exomia.Serialization.Utils
             {
                 MemCpy(dst, src + offset + 4, length * 8);
             }
-            byteSize = length;
+            byteSize = length * 8;
             return buffer;
         }
 
@@ -171,7 +171,7 @@ namespace Exomia.Serialization.Utils
             {
                 MemCpy(dst, src + offset + 4, length * 2);
             }
-            byteSize = length;
+            byteSize = length * 2;
             return buffer;
         }
 
@@ -207,7 +207,7 @@ namespace Exomia.Serialization.Utils
             {
                 MemCpy(dst, src + offset + 4, length * 2);
             }
-            byteSize = length;
+            byteSize = length * 2;
             return buffer;
         }
 
@@ -243,7 +243,7 @@ namespace Exomia.Serialization.Utils
             {
                 MemCpy(dst, src + offset + 4, length * 4);
             }
-            byteSize = length;
+            byteSize = length * 4;
             return buffer;
         }
 
@@ -279,7 +279,7 @@ namespace Exomia.Serialization.Utils
             {
                 MemCpy(dst, src + offset + 4, length * 4);
             }
-            byteSize = length;
+            byteSize = length * 4;
             return buffer;
         }
 
@@ -315,7 +315,7 @@ namespace Exomia.Serialization.Utils
             {
                 MemCpy(dst, src + offset + 4, length * 8);
             }
-            byteSize = length;
+            byteSize = length * 8;
             return buffer;
         }
 
@@ -351,7 +351,7 @@ namespace Exomia.Serialization.Utils
             {
                 MemCpy(dst, src + offset + 4, length * 8);
             }
-            byteSize = length;
+            byteSize = length * 8;
             return buffer;
         }
 
@@ -387,7 +387,7 @@ namespace Exomia.Serialization.Utils
             {
                 MemCpy(dst, src + offset + 4, length * 2);
             }
-            byteSize = length;
+            byteSize = length * 2;
             return buffer;
         }
 
@@ -446,7 +446,7 @@ namespace Exomia.Serialization.Utils
             {
                 MemCpy(dst, src + offset + 4, length * 16);
             }
-            byteSize = length;
+            byteSize = length * 16;
             return buffer;
         }
 
@@ -482,7 +482,7 @@ namespace Exomia.Serialization.Utils
             {
                 MemCpy(dst, src + offset + 4, length * 16);
             }
-            byteSize = length;
+            byteSize = length * 16;
             return buffer;
         }
 
@@ -518,7 +518,7 @@ namespace Exomia.Serialization.Utils
             {
                 MemCpy(dst, src + offset + 4, length * 8);
             }
-            byteSize = length;
+            byteSize = length * 8;
             return buffer;
         }
 
@@ -554,7 +554,7 @@ namespace Exomia.Serialization.Utils
             {
                 MemCpy(dst, src + offset + 4, length * 8);
             }
-            byteSize = length;
+            byteSize = length * 8;
             return buffer;
         }
 

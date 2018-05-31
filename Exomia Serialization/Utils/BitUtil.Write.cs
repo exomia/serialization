@@ -30,8 +30,12 @@ namespace Exomia.Serialization.Utils
 {
     public static unsafe partial class BitUtil
     {
+        #region Variables
+
         private const byte ZERO = 0;
         private const byte ONE = 1;
+
+        #endregion
 
         #region Methods
 

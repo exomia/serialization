@@ -63,8 +63,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="values">boolean array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(ref byte[] bytes, int offset, bool[] values)
+        public static void WriteUnsafe(ref byte[] bytes, int offset, bool[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (bool* src = values)
@@ -75,6 +76,7 @@ namespace Exomia.Serialization.Utils
                     MemCpy(dst + offset + 4, src, length);
                 }
             }
+            byteSize = length;
         }
 
         /// <summary>
@@ -84,8 +86,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">boolean array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* dst, int offset, bool[] values)
+        public static void WriteUnsafe(byte* dst, int offset, bool[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (bool* src = values)
@@ -93,6 +96,30 @@ namespace Exomia.Serialization.Utils
                 *(int*)dst = length;
                 MemCpy(dst + offset + 4, src, length);
             }
+            byteSize = length;
+        }
+
+        /// <summary>
+        ///     writes a byte array into the byte array to the given offset
+        ///     does not ensure capacity of the byte array
+        /// </summary>
+        /// <param name="bytes">byte array</param>
+        /// <param name="offset">offset</param>
+        /// <param name="values">byte array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void WriteUnsafe(ref byte[] bytes, int offset, byte[] values, out int byteSize)
+        {
+            int length = values.Length;
+            fixed (byte* src = values)
+            {
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length);
+                }
+            }
+            byteSize = length;
         }
 
         /// <summary>
@@ -102,8 +129,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">byte array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* dst, int offset, byte[] values)
+        public static void WriteUnsafe(byte* dst, int offset, byte[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (byte* src = values)
@@ -111,6 +139,7 @@ namespace Exomia.Serialization.Utils
                 *(int*)dst = length;
                 MemCpy(dst + offset + 4, src, length);
             }
+            byteSize = length;
         }
 
         /// <summary>
@@ -145,8 +174,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="values">sbyte array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(ref byte[] bytes, int offset, sbyte[] values)
+        public static void WriteUnsafe(ref byte[] bytes, int offset, sbyte[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (sbyte* src = values)
@@ -157,6 +187,7 @@ namespace Exomia.Serialization.Utils
                     MemCpy(dst + offset + 4, src, length);
                 }
             }
+            byteSize = length;
         }
 
         /// <summary>
@@ -166,8 +197,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">sbyte array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* dst, int offset, sbyte[] values)
+        public static void WriteUnsafe(byte* dst, int offset, sbyte[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (sbyte* src = values)
@@ -175,6 +207,7 @@ namespace Exomia.Serialization.Utils
                 *(int*)dst = length;
                 MemCpy(dst + offset + 4, src, length);
             }
+            byteSize = length;
         }
 
         /// <summary>
@@ -209,8 +242,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="values">float array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(ref byte[] bytes, int offset, float[] values)
+        public static void WriteUnsafe(ref byte[] bytes, int offset, float[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (float* src = values)
@@ -221,6 +255,7 @@ namespace Exomia.Serialization.Utils
                     MemCpy(dst + offset + 4, src, length * 4);
                 }
             }
+            byteSize = length * 4;
         }
 
         /// <summary>
@@ -230,8 +265,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">float array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* dst, int offset, float[] values)
+        public static void WriteUnsafe(byte* dst, int offset, float[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (float* src = values)
@@ -239,6 +275,7 @@ namespace Exomia.Serialization.Utils
                 *(int*)dst = length;
                 MemCpy(dst + offset + 4, src, length * 4);
             }
+            byteSize = length * 4;
         }
 
         /// <summary>
@@ -273,8 +310,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="values">double array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(ref byte[] bytes, int offset, double[] values)
+        public static void WriteUnsafe(ref byte[] bytes, int offset, double[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (double* src = values)
@@ -285,6 +323,7 @@ namespace Exomia.Serialization.Utils
                     MemCpy(dst + offset + 4, src, length * 8);
                 }
             }
+            byteSize = length * 8;
         }
 
         /// <summary>
@@ -294,8 +333,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">double array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* dst, int offset, double[] values)
+        public static void WriteUnsafe(byte* dst, int offset, double[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (double* src = values)
@@ -303,6 +343,7 @@ namespace Exomia.Serialization.Utils
                 *(int*)dst = length;
                 MemCpy(dst + offset + 4, src, length * 8);
             }
+            byteSize = length * 8;
         }
 
         /// <summary>
@@ -337,8 +378,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="values">short array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(ref byte[] bytes, int offset, short[] values)
+        public static void WriteUnsafe(ref byte[] bytes, int offset, short[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (short* src = values)
@@ -349,6 +391,7 @@ namespace Exomia.Serialization.Utils
                     MemCpy(dst + offset + 4, src, length * 2);
                 }
             }
+            byteSize = length * 2;
         }
 
         /// <summary>
@@ -358,8 +401,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">short array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* dst, int offset, short[] values)
+        public static void WriteUnsafe(byte* dst, int offset, short[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (short* src = values)
@@ -367,6 +411,7 @@ namespace Exomia.Serialization.Utils
                 *(int*)dst = length;
                 MemCpy(dst + offset + 4, src, length * 2);
             }
+            byteSize = length * 2;
         }
 
         /// <summary>
@@ -401,8 +446,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="values">ushort array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(ref byte[] bytes, int offset, ushort[] values)
+        public static void WriteUnsafe(ref byte[] bytes, int offset, ushort[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (ushort* src = values)
@@ -413,6 +459,7 @@ namespace Exomia.Serialization.Utils
                     MemCpy(dst + offset + 4, src, length * 2);
                 }
             }
+            byteSize = length * 2;
         }
 
         /// <summary>
@@ -422,8 +469,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">ushort array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* dst, int offset, ushort[] values)
+        public static void WriteUnsafe(byte* dst, int offset, ushort[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (ushort* src = values)
@@ -431,6 +479,7 @@ namespace Exomia.Serialization.Utils
                 *(int*)dst = length;
                 MemCpy(dst + offset + 4, src, length * 2);
             }
+            byteSize = length * 2;
         }
 
         /// <summary>
@@ -465,9 +514,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="values">int array</param>
-        /// MO
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(ref byte[] bytes, int offset, int[] values)
+        public static void WriteUnsafe(ref byte[] bytes, int offset, int[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (int* src = values)
@@ -478,6 +527,7 @@ namespace Exomia.Serialization.Utils
                     MemCpy(dst + offset + 4, src, length * 4);
                 }
             }
+            byteSize = length * 4;
         }
 
         /// <summary>
@@ -487,8 +537,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">int array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* dst, int offset, int[] values)
+        public static void WriteUnsafe(byte* dst, int offset, int[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (int* src = values)
@@ -496,6 +547,7 @@ namespace Exomia.Serialization.Utils
                 *(int*)dst = length;
                 MemCpy(dst + offset + 4, src, length * 4);
             }
+            byteSize = length * 4;
         }
 
         /// <summary>
@@ -530,8 +582,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="values">uint array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(ref byte[] bytes, int offset, uint[] values)
+        public static void WriteUnsafe(ref byte[] bytes, int offset, uint[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (uint* src = values)
@@ -542,6 +595,7 @@ namespace Exomia.Serialization.Utils
                     MemCpy(dst + offset + 4, src, length * 4);
                 }
             }
+            byteSize = length * 4;
         }
 
         /// <summary>
@@ -551,8 +605,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">uint array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* dst, int offset, uint[] values)
+        public static void WriteUnsafe(byte* dst, int offset, uint[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (uint* src = values)
@@ -560,6 +615,7 @@ namespace Exomia.Serialization.Utils
                 *(int*)dst = length;
                 MemCpy(dst + offset + 4, src, length * 4);
             }
+            byteSize = length * 4;
         }
 
         /// <summary>
@@ -594,8 +650,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="values">long array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(ref byte[] bytes, int offset, long[] values)
+        public static void WriteUnsafe(ref byte[] bytes, int offset, long[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (long* src = values)
@@ -606,6 +663,7 @@ namespace Exomia.Serialization.Utils
                     MemCpy(dst + offset + 4, src, length * 8);
                 }
             }
+            byteSize = length * 8;
         }
 
         /// <summary>
@@ -615,8 +673,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">long array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* dst, int offset, long[] values)
+        public static void WriteUnsafe(byte* dst, int offset, long[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (long* src = values)
@@ -624,6 +683,7 @@ namespace Exomia.Serialization.Utils
                 *(int*)dst = length;
                 MemCpy(dst + offset + 4, src, length * 8);
             }
+            byteSize = length * 8;
         }
 
         /// <summary>
@@ -658,8 +718,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="values">ulong array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(ref byte[] bytes, int offset, ulong[] values)
+        public static void WriteUnsafe(ref byte[] bytes, int offset, ulong[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (ulong* src = values)
@@ -670,6 +731,7 @@ namespace Exomia.Serialization.Utils
                     MemCpy(dst + offset + 4, src, length * 8);
                 }
             }
+            byteSize = length * 8;
         }
 
         /// <summary>
@@ -679,8 +741,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">ulong array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* dst, int offset, ulong[] values)
+        public static void WriteUnsafe(byte* dst, int offset, ulong[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (ulong* src = values)
@@ -688,6 +751,7 @@ namespace Exomia.Serialization.Utils
                 *(int*)dst = length;
                 MemCpy(dst + offset + 4, src, length * 8);
             }
+            byteSize = length * 8;
         }
 
         /// <summary>
@@ -722,8 +786,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="values">char array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(ref byte[] bytes, int offset, char[] values)
+        public static void WriteUnsafe(ref byte[] bytes, int offset, char[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (char* src = values)
@@ -734,6 +799,7 @@ namespace Exomia.Serialization.Utils
                     MemCpy(dst + offset + 4, src, length * 2);
                 }
             }
+            byteSize = length * 2;
         }
 
         /// <summary>
@@ -743,8 +809,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">char array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* dst, int offset, char[] values)
+        public static void WriteUnsafe(byte* dst, int offset, char[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (char* src = values)
@@ -752,6 +819,7 @@ namespace Exomia.Serialization.Utils
                 *(int*)dst = length;
                 MemCpy(dst + offset + 4, src, length * 2);
             }
+            byteSize = length * 2;
         }
 
         /// <summary>
@@ -785,11 +853,14 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="values">string array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(ref byte[] bytes, int offset, string[] values)
+        public static void WriteUnsafe(ref byte[] bytes, int offset, string[] values, out int byteSize)
         {
             int length = values.Length;
             WriteUnsafe(ref bytes, offset, values.Length);
+
+            int startOffset = offset;
             offset += 4;
 
             for (int i = 0; i < length; i++)
@@ -797,6 +868,8 @@ namespace Exomia.Serialization.Utils
                 WriteUnsafe(ref bytes, offset, values[i]);
                 offset += 2 + s_Encoding.GetMaxByteCount(values[i].Length);
             }
+
+            byteSize = offset - startOffset;
         }
 
         /// <summary>
@@ -831,8 +904,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="values">decimal array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(ref byte[] bytes, int offset, decimal[] values)
+        public static void WriteUnsafe(ref byte[] bytes, int offset, decimal[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (decimal* src = values)
@@ -843,6 +917,7 @@ namespace Exomia.Serialization.Utils
                     MemCpy(dst + offset + 4, src, length * 16);
                 }
             }
+            byteSize = length * 16;
         }
 
         /// <summary>
@@ -852,8 +927,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">decimal array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* dst, int offset, decimal[] values)
+        public static void WriteUnsafe(byte* dst, int offset, decimal[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (decimal* src = values)
@@ -861,6 +937,7 @@ namespace Exomia.Serialization.Utils
                 *(int*)dst = length;
                 MemCpy(dst + offset + 4, src, length * 16);
             }
+            byteSize = length * 16;
         }
 
         /// <summary>
@@ -895,8 +972,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="values">Guid array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(ref byte[] bytes, int offset, Guid[] values)
+        public static void WriteUnsafe(ref byte[] bytes, int offset, Guid[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (Guid* src = values)
@@ -907,6 +985,7 @@ namespace Exomia.Serialization.Utils
                     MemCpy(dst + offset + 4, src, length * 16);
                 }
             }
+            byteSize = length * 16;
         }
 
         /// <summary>
@@ -916,8 +995,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">Guid array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* dst, int offset, Guid[] values)
+        public static void WriteUnsafe(byte* dst, int offset, Guid[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (Guid* src = values)
@@ -925,6 +1005,7 @@ namespace Exomia.Serialization.Utils
                 *(int*)dst = length;
                 MemCpy(dst + offset + 4, src, length * 16);
             }
+            byteSize = length * 16;
         }
 
         /// <summary>
@@ -959,8 +1040,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="values">TimeSpan array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(ref byte[] bytes, int offset, TimeSpan[] values)
+        public static void WriteUnsafe(ref byte[] bytes, int offset, TimeSpan[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (TimeSpan* src = values)
@@ -971,6 +1053,7 @@ namespace Exomia.Serialization.Utils
                     MemCpy(dst + offset + 4, src, length * 8);
                 }
             }
+            byteSize = length * 8;
         }
 
         /// <summary>
@@ -980,8 +1063,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">TimeSpan array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* dst, int offset, TimeSpan[] values)
+        public static void WriteUnsafe(byte* dst, int offset, TimeSpan[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (TimeSpan* src = values)
@@ -989,6 +1073,7 @@ namespace Exomia.Serialization.Utils
                 *(int*)dst = length;
                 MemCpy(dst + offset + 4, src, length * 8);
             }
+            byteSize = length * 8;
         }
 
         /// <summary>
@@ -1023,8 +1108,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="values">DateTime array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(ref byte[] bytes, int offset, DateTime[] values)
+        public static void WriteUnsafe(ref byte[] bytes, int offset, DateTime[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (DateTime* src = values)
@@ -1035,6 +1121,7 @@ namespace Exomia.Serialization.Utils
                     MemCpy(dst + offset + 4, src, length * 8);
                 }
             }
+            byteSize = length * 8;
         }
 
         /// <summary>
@@ -1044,8 +1131,9 @@ namespace Exomia.Serialization.Utils
         /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">DateTime array</param>
+        /// <param name="byteSize">out sizeof bytes used</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* dst, int offset, DateTime[] values)
+        public static void WriteUnsafe(byte* dst, int offset, DateTime[] values, out int byteSize)
         {
             int length = values.Length;
             fixed (DateTime* src = values)
@@ -1053,6 +1141,7 @@ namespace Exomia.Serialization.Utils
                 *(int*)dst = length;
                 MemCpy(dst + offset + 4, src, length * 8);
             }
+            byteSize = length * 8;
         }
 
         #endregion
