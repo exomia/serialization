@@ -44,12 +44,13 @@ namespace Exomia.Serialization.Utils
             EnsureCapacity(ref bytes, offset, 4 + values.Length);
 
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (bool* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 1, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length);
+                }
             }
 
             return 4 + 1 * length;
@@ -66,12 +67,13 @@ namespace Exomia.Serialization.Utils
         public static void WriteUnsafe(ref byte[] bytes, int offset, bool[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (bool* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 1, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length);
+                }
             }
         }
 
@@ -79,19 +81,17 @@ namespace Exomia.Serialization.Utils
         ///     writes a boolean array into the byte array to the given offset
         ///     does not ensure capacity of the byte array
         /// </summary>
-        /// <param name="ptr">byte pointer</param>
+        /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">boolean array</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* ptr, int offset, bool[] values)
+        public static void WriteUnsafe(byte* dst, int offset, bool[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ptr, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (bool* src = values)
             {
-                WriteUnsafe(ptr, offset + i * 1, values[i]);
+                *(int*)dst = length;
+                MemCpy(dst + offset + 4, src, length);
             }
         }
 
@@ -99,19 +99,17 @@ namespace Exomia.Serialization.Utils
         ///     writes a byte array into the byte array to the given offset
         ///     does not ensure capacity of the byte array
         /// </summary>
-        /// <param name="ptr">byte pointer</param>
+        /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">byte array</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* ptr, int offset, byte[] values)
+        public static void WriteUnsafe(byte* dst, int offset, byte[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ptr, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (byte* src = values)
             {
-                WriteUnsafe(ptr, offset + i * 1, values[i]);
+                *(int*)dst = length;
+                MemCpy(dst + offset + 4, src, length);
             }
         }
 
@@ -128,12 +126,13 @@ namespace Exomia.Serialization.Utils
             EnsureCapacity(ref bytes, offset, 4 + values.Length);
 
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (sbyte* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 1, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length);
+                }
             }
 
             return 4 + 1 * length;
@@ -150,12 +149,13 @@ namespace Exomia.Serialization.Utils
         public static void WriteUnsafe(ref byte[] bytes, int offset, sbyte[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (sbyte* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 1, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length);
+                }
             }
         }
 
@@ -163,19 +163,17 @@ namespace Exomia.Serialization.Utils
         ///     writes a sbyte array into the byte array to the given offset
         ///     does not ensure capacity of the byte array
         /// </summary>
-        /// <param name="ptr">byte pointer</param>
+        /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">sbyte array</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* ptr, int offset, sbyte[] values)
+        public static void WriteUnsafe(byte* dst, int offset, sbyte[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ptr, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (sbyte* src = values)
             {
-                WriteUnsafe(ptr, offset + i * 1, values[i]);
+                *(int*)dst = length;
+                MemCpy(dst + offset + 4, src, length);
             }
         }
 
@@ -192,12 +190,13 @@ namespace Exomia.Serialization.Utils
             EnsureCapacity(ref bytes, offset, 4 + values.Length);
 
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (float* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 8, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length * 4);
+                }
             }
 
             return 4 + 4 * length;
@@ -214,12 +213,13 @@ namespace Exomia.Serialization.Utils
         public static void WriteUnsafe(ref byte[] bytes, int offset, float[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (float* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 4, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length * 4);
+                }
             }
         }
 
@@ -227,19 +227,17 @@ namespace Exomia.Serialization.Utils
         ///     writes a float array into the byte array to the given offset
         ///     does not ensure capacity of the byte array
         /// </summary>
-        /// <param name="ptr">byte pointer</param>
+        /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">float array</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* ptr, int offset, float[] values)
+        public static void WriteUnsafe(byte* dst, int offset, float[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ptr, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (float* src = values)
             {
-                WriteUnsafe(ptr, offset + i * 4, values[i]);
+                *(int*)dst = length;
+                MemCpy(dst + offset + 4, src, length * 4);
             }
         }
 
@@ -256,12 +254,13 @@ namespace Exomia.Serialization.Utils
             EnsureCapacity(ref bytes, offset, 4 + values.Length);
 
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (double* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 8, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length * 8);
+                }
             }
 
             return 4 + 8 * length;
@@ -278,12 +277,13 @@ namespace Exomia.Serialization.Utils
         public static void WriteUnsafe(ref byte[] bytes, int offset, double[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (double* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 8, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length * 8);
+                }
             }
         }
 
@@ -291,19 +291,17 @@ namespace Exomia.Serialization.Utils
         ///     writes a double array into the byte array to the given offset
         ///     does not ensure capacity of the byte array
         /// </summary>
-        /// <param name="ptr">byte pointer</param>
+        /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">double array</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* ptr, int offset, double[] values)
+        public static void WriteUnsafe(byte* dst, int offset, double[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ptr, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (double* src = values)
             {
-                WriteUnsafe(ptr, offset + i * 8, values[i]);
+                *(int*)dst = length;
+                MemCpy(dst + offset + 4, src, length * 8);
             }
         }
 
@@ -320,12 +318,13 @@ namespace Exomia.Serialization.Utils
             EnsureCapacity(ref bytes, offset, 4 + values.Length);
 
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (short* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 2, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length * 2);
+                }
             }
 
             return 4 + 2 * length;
@@ -342,12 +341,13 @@ namespace Exomia.Serialization.Utils
         public static void WriteUnsafe(ref byte[] bytes, int offset, short[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (short* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 2, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length * 2);
+                }
             }
         }
 
@@ -355,19 +355,17 @@ namespace Exomia.Serialization.Utils
         ///     writes a short array into the byte array to the given offset
         ///     does not ensure capacity of the byte array
         /// </summary>
-        /// <param name="ptr">byte pointer</param>
+        /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">short array</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* ptr, int offset, short[] values)
+        public static void WriteUnsafe(byte* dst, int offset, short[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ptr, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (short* src = values)
             {
-                WriteUnsafe(ptr, offset + i * 2, values[i]);
+                *(int*)dst = length;
+                MemCpy(dst + offset + 4, src, length * 2);
             }
         }
 
@@ -384,12 +382,13 @@ namespace Exomia.Serialization.Utils
             EnsureCapacity(ref bytes, offset, 4 + values.Length);
 
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (ushort* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 2, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length * 2);
+                }
             }
 
             return 4 + 2 * length;
@@ -406,12 +405,13 @@ namespace Exomia.Serialization.Utils
         public static void WriteUnsafe(ref byte[] bytes, int offset, ushort[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (ushort* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 2, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length * 2);
+                }
             }
         }
 
@@ -419,19 +419,17 @@ namespace Exomia.Serialization.Utils
         ///     writes a ushort array into the byte array to the given offset
         ///     does not ensure capacity of the byte array
         /// </summary>
-        /// <param name="ptr">byte pointer</param>
+        /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">ushort array</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* ptr, int offset, ushort[] values)
+        public static void WriteUnsafe(byte* dst, int offset, ushort[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ptr, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (ushort* src = values)
             {
-                WriteUnsafe(ptr, offset + i * 2, values[i]);
+                *(int*)dst = length;
+                MemCpy(dst + offset + 4, src, length * 2);
             }
         }
 
@@ -448,12 +446,13 @@ namespace Exomia.Serialization.Utils
             EnsureCapacity(ref bytes, offset, 4 + values.Length);
 
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (int* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 4, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length * 4);
+                }
             }
 
             return 4 + 4 * length;
@@ -471,12 +470,13 @@ namespace Exomia.Serialization.Utils
         public static void WriteUnsafe(ref byte[] bytes, int offset, int[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (int* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 4, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length * 4);
+                }
             }
         }
 
@@ -484,19 +484,17 @@ namespace Exomia.Serialization.Utils
         ///     writes a int array into the byte array to the given offset
         ///     does not ensure capacity of the byte array
         /// </summary>
-        /// <param name="ptr">byte pointer</param>
+        /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">int array</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* ptr, int offset, int[] values)
+        public static void WriteUnsafe(byte* dst, int offset, int[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ptr, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (int* src = values)
             {
-                WriteUnsafe(ptr, offset + i * 4, values[i]);
+                *(int*)dst = length;
+                MemCpy(dst + offset + 4, src, length * 4);
             }
         }
 
@@ -513,12 +511,13 @@ namespace Exomia.Serialization.Utils
             EnsureCapacity(ref bytes, offset, 4 + values.Length);
 
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (uint* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 4, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length * 4);
+                }
             }
 
             return 4 + 4 * length;
@@ -535,12 +534,13 @@ namespace Exomia.Serialization.Utils
         public static void WriteUnsafe(ref byte[] bytes, int offset, uint[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (uint* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 4, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length * 4);
+                }
             }
         }
 
@@ -548,19 +548,17 @@ namespace Exomia.Serialization.Utils
         ///     writes a uint array into the byte array to the given offset
         ///     does not ensure capacity of the byte array
         /// </summary>
-        /// <param name="ptr">byte pointer</param>
+        /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">uint array</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* ptr, int offset, uint[] values)
+        public static void WriteUnsafe(byte* dst, int offset, uint[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ptr, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (uint* src = values)
             {
-                WriteUnsafe(ptr, offset + i * 4, values[i]);
+                *(int*)dst = length;
+                MemCpy(dst + offset + 4, src, length * 4);
             }
         }
 
@@ -577,12 +575,13 @@ namespace Exomia.Serialization.Utils
             EnsureCapacity(ref bytes, offset, 4 + values.Length);
 
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (long* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 8, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length * 8);
+                }
             }
 
             return 4 + 8 * length;
@@ -599,12 +598,13 @@ namespace Exomia.Serialization.Utils
         public static void WriteUnsafe(ref byte[] bytes, int offset, long[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (long* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 8, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length * 8);
+                }
             }
         }
 
@@ -612,19 +612,17 @@ namespace Exomia.Serialization.Utils
         ///     writes a long array into the byte array to the given offset
         ///     does not ensure capacity of the byte array
         /// </summary>
-        /// <param name="ptr">byte pointer</param>
+        /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">long array</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* ptr, int offset, long[] values)
+        public static void WriteUnsafe(byte* dst, int offset, long[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ptr, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (long* src = values)
             {
-                WriteUnsafe(ptr, offset + i * 8, values[i]);
+                *(int*)dst = length;
+                MemCpy(dst + offset + 4, src, length * 8);
             }
         }
 
@@ -641,12 +639,13 @@ namespace Exomia.Serialization.Utils
             EnsureCapacity(ref bytes, offset, 4 + values.Length);
 
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (ulong* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 8, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length * 8);
+                }
             }
 
             return 4 + 8 * length;
@@ -663,12 +662,13 @@ namespace Exomia.Serialization.Utils
         public static void WriteUnsafe(ref byte[] bytes, int offset, ulong[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (ulong* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 8, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length * 8);
+                }
             }
         }
 
@@ -676,19 +676,17 @@ namespace Exomia.Serialization.Utils
         ///     writes a ulong array into the byte array to the given offset
         ///     does not ensure capacity of the byte array
         /// </summary>
-        /// <param name="ptr">byte pointer</param>
+        /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">ulong array</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* ptr, int offset, ulong[] values)
+        public static void WriteUnsafe(byte* dst, int offset, ulong[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ptr, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (ulong* src = values)
             {
-                WriteUnsafe(ptr, offset + i * 8, values[i]);
+                *(int*)dst = length;
+                MemCpy(dst + offset + 4, src, length * 8);
             }
         }
 
@@ -705,12 +703,13 @@ namespace Exomia.Serialization.Utils
             EnsureCapacity(ref bytes, offset, 4 + values.Length);
 
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (char* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 2, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length * 2);
+                }
             }
 
             return 4 + 2 * length;
@@ -727,12 +726,13 @@ namespace Exomia.Serialization.Utils
         public static void WriteUnsafe(ref byte[] bytes, int offset, char[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (char* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 2, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length * 2);
+                }
             }
         }
 
@@ -740,19 +740,17 @@ namespace Exomia.Serialization.Utils
         ///     writes a char array into the byte array to the given offset
         ///     does not ensure capacity of the byte array
         /// </summary>
-        /// <param name="ptr">byte pointer</param>
+        /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">char array</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* ptr, int offset, char[] values)
+        public static void WriteUnsafe(byte* dst, int offset, char[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ptr, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (char* src = values)
             {
-                WriteUnsafe(ptr, offset + i * 2, values[i]);
+                *(int*)dst = length;
+                MemCpy(dst + offset + 4, src, length * 2);
             }
         }
 
@@ -814,12 +812,13 @@ namespace Exomia.Serialization.Utils
             EnsureCapacity(ref bytes, offset, 4 + values.Length);
 
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (decimal* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 16, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length * 16);
+                }
             }
 
             return 4 + 16 * length;
@@ -836,12 +835,13 @@ namespace Exomia.Serialization.Utils
         public static void WriteUnsafe(ref byte[] bytes, int offset, decimal[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (decimal* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 16, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length * 16);
+                }
             }
         }
 
@@ -849,19 +849,17 @@ namespace Exomia.Serialization.Utils
         ///     writes a decimal array into the byte array to the given offset
         ///     does not ensure capacity of the byte array
         /// </summary>
-        /// <param name="ptr">byte pointer</param>
+        /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">decimal array</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* ptr, int offset, decimal[] values)
+        public static void WriteUnsafe(byte* dst, int offset, decimal[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ptr, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (decimal* src = values)
             {
-                WriteUnsafe(ptr, offset + i * 16, values[i]);
+                *(int*)dst = length;
+                MemCpy(dst + offset + 4, src, length * 16);
             }
         }
 
@@ -878,12 +876,13 @@ namespace Exomia.Serialization.Utils
             EnsureCapacity(ref bytes, offset, 4 + values.Length);
 
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (Guid* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 16, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length * 16);
+                }
             }
 
             return 4 + 16 * length;
@@ -900,12 +899,13 @@ namespace Exomia.Serialization.Utils
         public static void WriteUnsafe(ref byte[] bytes, int offset, Guid[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (Guid* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 16, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length * 16);
+                }
             }
         }
 
@@ -913,19 +913,17 @@ namespace Exomia.Serialization.Utils
         ///     writes a Guid array into the byte array to the given offset
         ///     does not ensure capacity of the byte array
         /// </summary>
-        /// <param name="ptr">byte pointer</param>
+        /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">Guid array</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* ptr, int offset, Guid[] values)
+        public static void WriteUnsafe(byte* dst, int offset, Guid[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ptr, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (Guid* src = values)
             {
-                WriteUnsafe(ptr, offset + i * 16, values[i]);
+                *(int*)dst = length;
+                MemCpy(dst + offset + 4, src, length * 16);
             }
         }
 
@@ -942,12 +940,13 @@ namespace Exomia.Serialization.Utils
             EnsureCapacity(ref bytes, offset, 4 + values.Length);
 
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (TimeSpan* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 8, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length * 8);
+                }
             }
 
             return 4 + 8 * length;
@@ -964,12 +963,13 @@ namespace Exomia.Serialization.Utils
         public static void WriteUnsafe(ref byte[] bytes, int offset, TimeSpan[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (TimeSpan* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 8, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length * 8);
+                }
             }
         }
 
@@ -977,19 +977,17 @@ namespace Exomia.Serialization.Utils
         ///     writes a TimeSpan array into the byte array to the given offset
         ///     does not ensure capacity of the byte array
         /// </summary>
-        /// <param name="ptr">byte pointer</param>
+        /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">TimeSpan array</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* ptr, int offset, TimeSpan[] values)
+        public static void WriteUnsafe(byte* dst, int offset, TimeSpan[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ptr, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (TimeSpan* src = values)
             {
-                WriteUnsafe(ptr, offset + i * 8, values[i]);
+                *(int*)dst = length;
+                MemCpy(dst + offset + 4, src, length * 8);
             }
         }
 
@@ -1006,12 +1004,13 @@ namespace Exomia.Serialization.Utils
             EnsureCapacity(ref bytes, offset, 4 + values.Length);
 
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (DateTime* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 8, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length * 8);
+                }
             }
 
             return 4 + 8 * length;
@@ -1028,12 +1027,13 @@ namespace Exomia.Serialization.Utils
         public static void WriteUnsafe(ref byte[] bytes, int offset, DateTime[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ref bytes, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (DateTime* src = values)
             {
-                WriteUnsafe(ref bytes, offset + i * 8, values[i]);
+                fixed (byte* dst = bytes)
+                {
+                    *(int*)dst = length;
+                    MemCpy(dst + offset + 4, src, length * 8);
+                }
             }
         }
 
@@ -1041,19 +1041,17 @@ namespace Exomia.Serialization.Utils
         ///     writes a DateTime array into the byte array to the given offset
         ///     does not ensure capacity of the byte array
         /// </summary>
-        /// <param name="ptr">byte pointer</param>
+        /// <param name="dst">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="values">DateTime array</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void WriteUnsafe(byte* ptr, int offset, DateTime[] values)
+        public static void WriteUnsafe(byte* dst, int offset, DateTime[] values)
         {
             int length = values.Length;
-            WriteUnsafe(ptr, offset, values.Length);
-            offset += 4;
-
-            for (int i = 0; i < length; i++)
+            fixed (DateTime* src = values)
             {
-                WriteUnsafe(ptr, offset + i * 8, values[i]);
+                *(int*)dst = length;
+                MemCpy(dst + offset + 4, src, length * 8);
             }
         }
 

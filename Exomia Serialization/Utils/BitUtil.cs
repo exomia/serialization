@@ -88,7 +88,7 @@ namespace Exomia.Serialization.Utils
         [SuppressUnmanagedCodeSecurity]
         [DllImport(
             "msvcrt.dll", EntryPoint = "memcpy", CallingConvention = CallingConvention.Cdecl, SetLastError = false)]
-        private static extern void Memcpy(void* dest, void* src, int count);
+        private static extern void MemCpy(void* dest, void* src, int count);
 
         #endregion
     }

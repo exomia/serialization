@@ -41,34 +41,29 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool[] ReadArrayBoolean(ref byte[] bytes, int offset, out int byteSize)
         {
-            fixed (byte* ptr = bytes)
+            fixed (byte* src = bytes)
             {
-                return ReadArrayBoolean(ptr, offset, out byteSize);
+                return ReadArrayBoolean(src, offset, out byteSize);
             }
         }
 
         /// <summary>
         ///     reads a bool value of the byte array from the given offset
         /// </summary>
-        /// <param name="ptr">byte array</param>
+        /// <param name="src">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="byteSize">out sizeof array in bytes</param>
         /// <returns>bool array</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool[] ReadArrayBoolean(byte* ptr, int offset, out int byteSize)
+        public static bool[] ReadArrayBoolean(byte* src, int offset, out int byteSize)
         {
-            int lenght = ReadInt32(ptr, offset);
-            offset += 4;
-
-            bool[] buffer = new bool[lenght];
-
-            for (int i = 0; i < lenght; i++)
+            int length = ReadInt32(src, offset);
+            bool[] buffer = new bool[length];
+            fixed (bool* dst = buffer)
             {
-                buffer[i] = ReadBoolean(ptr, offset + i * 1);
+                MemCpy(dst, src + offset + 4, length);
             }
-
-            byteSize = lenght * 1;
-
+            byteSize = length;
             return buffer;
         }
 
@@ -82,34 +77,29 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float[] ReadArraySingle(ref byte[] bytes, int offset, out int byteSize)
         {
-            fixed (byte* ptr = bytes)
+            fixed (byte* src = bytes)
             {
-                return ReadArraySingle(ptr, offset, out byteSize);
+                return ReadArraySingle(src, offset, out byteSize);
             }
         }
 
         /// <summary>
         ///     reads a float value of the byte array from the given offset
         /// </summary>
-        /// <param name="ptr">byte array</param>
+        /// <param name="src">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="byteSize">out sizeof array in bytes</param>
         /// <returns>float array</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float[] ReadArraySingle(byte* ptr, int offset, out int byteSize)
+        public static float[] ReadArraySingle(byte* src, int offset, out int byteSize)
         {
-            int lenght = ReadInt32(ptr, offset);
-            offset += 4;
-
-            float[] buffer = new float[lenght];
-
-            for (int i = 0; i < lenght; i++)
+            int length = ReadInt32(src, offset);
+            float[] buffer = new float[length];
+            fixed (float* dst = buffer)
             {
-                buffer[i] = ReadSingle(ptr, offset + i * 4);
+                MemCpy(dst, src + offset + 4, length * 4);
             }
-
-            byteSize = lenght * 4;
-
+            byteSize = length;
             return buffer;
         }
 
@@ -123,34 +113,29 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double[] ReadArrayReal(ref byte[] bytes, int offset, out int byteSize)
         {
-            fixed (byte* ptr = bytes)
+            fixed (byte* src = bytes)
             {
-                return ReadArrayReal(ptr, offset, out byteSize);
+                return ReadArrayReal(src, offset, out byteSize);
             }
         }
 
         /// <summary>
         ///     reads a double value of the byte array from the given offset
         /// </summary>
-        /// <param name="ptr">byte pointer</param>
+        /// <param name="src">byte pointer</param>
         /// <param name="offset">offset</param>
         /// <param name="byteSize">out sizeof array in bytes</param>
         /// <returns>double array</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double[] ReadArrayReal(byte* ptr, int offset, out int byteSize)
+        public static double[] ReadArrayReal(byte* src, int offset, out int byteSize)
         {
-            int lenght = ReadInt32(ptr, offset);
-            offset += 4;
-
-            double[] buffer = new double[lenght];
-
-            for (int i = 0; i < lenght; i++)
+            int length = ReadInt32(src, offset);
+            double[] buffer = new double[length];
+            fixed (double* dst = buffer)
             {
-                buffer[i] = ReadReal(ptr, offset + i * 8);
+                MemCpy(dst, src + offset + 4, length * 8);
             }
-
-            byteSize = lenght * 8;
-
+            byteSize = length;
             return buffer;
         }
 
@@ -164,34 +149,29 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static short[] ReadArrayInt16(ref byte[] bytes, int offset, out int byteSize)
         {
-            fixed (byte* ptr = bytes)
+            fixed (byte* src = bytes)
             {
-                return ReadArrayInt16(ptr, offset, out byteSize);
+                return ReadArrayInt16(src, offset, out byteSize);
             }
         }
 
         /// <summary>
         ///     reads a short value of the byte array from the given offset
         /// </summary>
-        /// <param name="ptr">byte array</param>
+        /// <param name="src">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="byteSize">out sizeof array in bytes</param>
         /// <returns>short array</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static short[] ReadArrayInt16(byte* ptr, int offset, out int byteSize)
+        public static short[] ReadArrayInt16(byte* src, int offset, out int byteSize)
         {
-            int lenght = ReadInt32(ptr, offset);
-            offset += 4;
-
-            short[] buffer = new short[lenght];
-
-            for (int i = 0; i < lenght; i++)
+            int length = ReadInt32(src, offset);
+            short[] buffer = new short[length];
+            fixed (short* dst = buffer)
             {
-                buffer[i] = ReadInt16(ptr, offset + i * 2);
+                MemCpy(dst, src + offset + 4, length * 2);
             }
-
-            byteSize = lenght * 2;
-
+            byteSize = length;
             return buffer;
         }
 
@@ -205,34 +185,29 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static ushort[] ReadArrayUInt16(ref byte[] bytes, int offset, out int byteSize)
         {
-            fixed (byte* ptr = bytes)
+            fixed (byte* src = bytes)
             {
-                return ReadArrayUInt16(ptr, offset, out byteSize);
+                return ReadArrayUInt16(src, offset, out byteSize);
             }
         }
 
         /// <summary>
         ///     reads a ushort value of the byte array from the given offset
         /// </summary>
-        /// <param name="ptr">byte array</param>
+        /// <param name="src">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="byteSize">out sizeof array in bytes</param>
         /// <returns>ushort array</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ushort[] ReadArrayUInt16(byte* ptr, int offset, out int byteSize)
+        public static ushort[] ReadArrayUInt16(byte* src, int offset, out int byteSize)
         {
-            int lenght = ReadInt32(ptr, offset);
-            offset += 4;
-
-            ushort[] buffer = new ushort[lenght];
-
-            for (int i = 0; i < lenght; i++)
+            int length = ReadInt32(src, offset);
+            ushort[] buffer = new ushort[length];
+            fixed (ushort* dst = buffer)
             {
-                buffer[i] = ReadUInt16(ptr, offset + i * 2);
+                MemCpy(dst, src + offset + 4, length * 2);
             }
-
-            byteSize = lenght * 2;
-
+            byteSize = length;
             return buffer;
         }
 
@@ -246,34 +221,29 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int[] ReadArrayInt32(ref byte[] bytes, int offset, out int byteSize)
         {
-            fixed (byte* ptr = bytes)
+            fixed (byte* src = bytes)
             {
-                return ReadArrayInt32(ptr, offset, out byteSize);
+                return ReadArrayInt32(src, offset, out byteSize);
             }
         }
 
         /// <summary>
         ///     reads a int value of the byte array from the given offset
         /// </summary>
-        /// <param name="ptr">byte array</param>
+        /// <param name="src">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="byteSize">out sizeof array in bytes</param>
         /// <returns>int array</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int[] ReadArrayInt32(byte* ptr, int offset, out int byteSize)
+        public static int[] ReadArrayInt32(byte* src, int offset, out int byteSize)
         {
-            int lenght = ReadInt32(ptr, offset);
-            offset += 4;
-
-            int[] buffer = new int[lenght];
-
-            for (int i = 0; i < lenght; i++)
+            int length = ReadInt32(src, offset);
+            int[] buffer = new int[length];
+            fixed (int* dst = buffer)
             {
-                buffer[i] = ReadInt32(ptr, offset + i * 4);
+                MemCpy(dst, src + offset + 4, length * 4);
             }
-
-            byteSize = lenght * 4;
-
+            byteSize = length;
             return buffer;
         }
 
@@ -287,34 +257,29 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint[] ReadArrayUInt32(ref byte[] bytes, int offset, out int byteSize)
         {
-            fixed (byte* ptr = bytes)
+            fixed (byte* src = bytes)
             {
-                return ReadArrayUInt32(ptr, offset, out byteSize);
+                return ReadArrayUInt32(src, offset, out byteSize);
             }
         }
 
         /// <summary>
         ///     reads a uint value of the byte array from the given offset
         /// </summary>
-        /// <param name="ptr">byte array</param>
+        /// <param name="src">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="byteSize">out sizeof array in bytes</param>
         /// <returns>uint array</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint[] ReadArrayUInt32(byte* ptr, int offset, out int byteSize)
+        public static uint[] ReadArrayUInt32(byte* src, int offset, out int byteSize)
         {
-            int lenght = ReadInt32(ptr, offset);
-            offset += 4;
-
-            uint[] buffer = new uint[lenght];
-
-            for (int i = 0; i < lenght; i++)
+            int length = ReadInt32(src, offset);
+            uint[] buffer = new uint[length];
+            fixed (uint* dst = buffer)
             {
-                buffer[i] = ReadUInt32(ptr, offset + i * 4);
+                MemCpy(dst, src + offset + 4, length * 4);
             }
-
-            byteSize = lenght * 4;
-
+            byteSize = length;
             return buffer;
         }
 
@@ -328,34 +293,29 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static long[] ReadArrayInt64(ref byte[] bytes, int offset, out int byteSize)
         {
-            fixed (byte* ptr = bytes)
+            fixed (byte* src = bytes)
             {
-                return ReadArrayInt64(ptr, offset, out byteSize);
+                return ReadArrayInt64(src, offset, out byteSize);
             }
         }
 
         /// <summary>
         ///     reads a long value of the byte array from the given offset
         /// </summary>
-        /// <param name="ptr">byte array</param>
+        /// <param name="src">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="byteSize">out sizeof array in bytes</param>
         /// <returns>uint array</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long[] ReadArrayInt64(byte* ptr, int offset, out int byteSize)
+        public static long[] ReadArrayInt64(byte* src, int offset, out int byteSize)
         {
-            int lenght = ReadInt32(ptr, offset);
-            offset += 4;
-
-            long[] buffer = new long[lenght];
-
-            for (int i = 0; i < lenght; i++)
+            int length = ReadInt32(src, offset);
+            long[] buffer = new long[length];
+            fixed (long* dst = buffer)
             {
-                buffer[i] = ReadInt64(ptr, offset + i * 8);
+                MemCpy(dst, src + offset + 4, length * 8);
             }
-
-            byteSize = lenght * 8;
-
+            byteSize = length;
             return buffer;
         }
 
@@ -369,34 +329,29 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static ulong[] ReadArrayUInt64(ref byte[] bytes, int offset, out int byteSize)
         {
-            fixed (byte* ptr = bytes)
+            fixed (byte* src = bytes)
             {
-                return ReadArrayUInt64(ptr, offset, out byteSize);
+                return ReadArrayUInt64(src, offset, out byteSize);
             }
         }
 
         /// <summary>
         ///     reads a ulong value of the byte array from the given offset
         /// </summary>
-        /// <param name="ptr">byte array</param>
+        /// <param name="src">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="byteSize">out sizeof array in bytes</param>
         /// <returns>ulong array</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ulong[] ReadArrayUInt64(byte* ptr, int offset, out int byteSize)
+        public static ulong[] ReadArrayUInt64(byte* src, int offset, out int byteSize)
         {
-            int lenght = ReadInt32(ptr, offset);
-            offset += 4;
-
-            ulong[] buffer = new ulong[lenght];
-
-            for (int i = 0; i < lenght; i++)
+            int length = ReadInt32(src, offset);
+            ulong[] buffer = new ulong[length];
+            fixed (ulong* dst = buffer)
             {
-                buffer[i] = ReadUInt64(ptr, offset + i * 8);
+                MemCpy(dst, src + offset + 4, length * 8);
             }
-
-            byteSize = lenght * 8;
-
+            byteSize = length;
             return buffer;
         }
 
@@ -410,34 +365,29 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static char[] ReadArrayChar(ref byte[] bytes, int offset, out int byteSize)
         {
-            fixed (byte* ptr = bytes)
+            fixed (byte* src = bytes)
             {
-                return ReadArrayChar(ptr, offset, out byteSize);
+                return ReadArrayChar(src, offset, out byteSize);
             }
         }
 
         /// <summary>
         ///     reads a char value of the byte array from the given offset
         /// </summary>
-        /// <param name="ptr">byte array</param>
+        /// <param name="src">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="byteSize">out sizeof array in bytes</param>
         /// <returns>char array</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static char[] ReadArrayChar(byte* ptr, int offset, out int byteSize)
+        public static char[] ReadArrayChar(byte* src, int offset, out int byteSize)
         {
-            int lenght = ReadInt32(ptr, offset);
-            offset += 4;
-
-            char[] buffer = new char[lenght];
-
-            for (int i = 0; i < lenght; i++)
+            int length = ReadInt32(src, offset);
+            char[] buffer = new char[length];
+            fixed (char* dst = buffer)
             {
-                buffer[i] = ReadChar(ptr, offset + i * 2);
+                MemCpy(dst, src + offset + 4, length * 2);
             }
-
-            byteSize = lenght * 2;
-
+            byteSize = length;
             return buffer;
         }
 
@@ -451,22 +401,16 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string[] ReadArrayString(ref byte[] bytes, int offset, out int byteSize)
         {
-            int lenght = ReadInt32(ref bytes, offset);
-
+            int length = ReadInt32(ref bytes, offset);
             int startOffset = offset;
-
             offset += 4;
-
-            string[] buffer = new string[lenght];
-
-            for (int i = 0; i < lenght; i++)
+            string[] buffer = new string[length];
+            for (int i = 0; i < length; i++)
             {
                 buffer[i] = ReadString(ref bytes, offset, out int bs);
                 offset += bs;
             }
-
             byteSize = offset - startOffset;
-
             return buffer;
         }
 
@@ -480,34 +424,29 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static decimal[] ReadArrayDecimal(ref byte[] bytes, int offset, out int byteSize)
         {
-            fixed (byte* ptr = bytes)
+            fixed (byte* src = bytes)
             {
-                return ReadArrayDecimal(ptr, offset, out byteSize);
+                return ReadArrayDecimal(src, offset, out byteSize);
             }
         }
 
         /// <summary>
         ///     reads a decimal value of the byte array from the given offset
         /// </summary>
-        /// <param name="ptr">byte array</param>
+        /// <param name="src">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="byteSize">out sizeof array in bytes</param>
         /// <returns>decimal array</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static decimal[] ReadArrayDecimal(byte* ptr, int offset, out int byteSize)
+        public static decimal[] ReadArrayDecimal(byte* src, int offset, out int byteSize)
         {
-            int lenght = ReadInt32(ptr, offset);
-            offset += 4;
-
-            decimal[] buffer = new decimal[lenght];
-
-            for (int i = 0; i < lenght; i++)
+            int length = ReadInt32(src, offset);
+            decimal[] buffer = new decimal[length];
+            fixed (decimal* dst = buffer)
             {
-                buffer[i] = ReadDecimal(ptr, offset + i * 16);
+                MemCpy(dst, src + offset + 4, length * 16);
             }
-
-            byteSize = lenght * 16;
-
+            byteSize = length;
             return buffer;
         }
 
@@ -521,34 +460,29 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Guid[] ReadArrayGuid(ref byte[] bytes, int offset, out int byteSize)
         {
-            fixed (byte* ptr = bytes)
+            fixed (byte* src = bytes)
             {
-                return ReadArrayGuid(ptr, offset, out byteSize);
+                return ReadArrayGuid(src, offset, out byteSize);
             }
         }
 
         /// <summary>
         ///     reads a Guid value of the byte array from the given offset
         /// </summary>
-        /// <param name="ptr">byte array</param>
+        /// <param name="src">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="byteSize">out sizeof array in bytes</param>
         /// <returns>Guid array</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Guid[] ReadArrayGuid(byte* ptr, int offset, out int byteSize)
+        public static Guid[] ReadArrayGuid(byte* src, int offset, out int byteSize)
         {
-            int lenght = ReadInt32(ptr, offset);
-            offset += 4;
-
-            Guid[] buffer = new Guid[lenght];
-
-            for (int i = 0; i < lenght; i++)
+            int length = ReadInt32(src, offset);
+            Guid[] buffer = new Guid[length];
+            fixed (Guid* dst = buffer)
             {
-                buffer[i] = ReadGuid(ptr, offset + i * 16);
+                MemCpy(dst, src + offset + 4, length * 16);
             }
-
-            byteSize = lenght * 16;
-
+            byteSize = length;
             return buffer;
         }
 
@@ -562,34 +496,29 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static TimeSpan[] ReadArrayTimeSpan(ref byte[] bytes, int offset, out int byteSize)
         {
-            fixed (byte* ptr = bytes)
+            fixed (byte* src = bytes)
             {
-                return ReadArrayTimeSpan(ptr, offset, out byteSize);
+                return ReadArrayTimeSpan(src, offset, out byteSize);
             }
         }
 
         /// <summary>
         ///     reads a TimeSpan value of the byte array from the given offset
         /// </summary>
-        /// <param name="ptr">byte array</param>
+        /// <param name="src">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="byteSize">out sizeof array in bytes</param>
         /// <returns>TimeSpan array</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static TimeSpan[] ReadArrayTimeSpan(byte* ptr, int offset, out int byteSize)
+        public static TimeSpan[] ReadArrayTimeSpan(byte* src, int offset, out int byteSize)
         {
-            int lenght = ReadInt32(ptr, offset);
-            offset += 4;
-
-            TimeSpan[] buffer = new TimeSpan[lenght];
-
-            for (int i = 0; i < lenght; i++)
+            int length = ReadInt32(src, offset);
+            TimeSpan[] buffer = new TimeSpan[length];
+            fixed (TimeSpan* dst = buffer)
             {
-                buffer[i] = ReadTimeSpan(ptr, offset + i * 8);
+                MemCpy(dst, src + offset + 4, length * 8);
             }
-
-            byteSize = lenght * 8;
-
+            byteSize = length;
             return buffer;
         }
 
@@ -603,34 +532,29 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static DateTime[] ReadArrayDateTime(ref byte[] bytes, int offset, out int byteSize)
         {
-            fixed (byte* ptr = bytes)
+            fixed (byte* src = bytes)
             {
-                return ReadArrayDateTime(ptr, offset, out byteSize);
+                return ReadArrayDateTime(src, offset, out byteSize);
             }
         }
 
         /// <summary>
         ///     reads a DateTime value of the byte array from the given offset
         /// </summary>
-        /// <param name="ptr">byte array</param>
+        /// <param name="src">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="byteSize">out sizeof array in bytes</param>
         /// <returns>DateTime array</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static DateTime[] ReadArrayDateTime(byte* ptr, int offset, out int byteSize)
+        public static DateTime[] ReadArrayDateTime(byte* src, int offset, out int byteSize)
         {
-            int lenght = ReadInt32(ptr, offset);
-            offset += 4;
-
-            DateTime[] buffer = new DateTime[lenght];
-
-            for (int i = 0; i < lenght; i++)
+            int length = ReadInt32(src, offset);
+            DateTime[] buffer = new DateTime[length];
+            fixed (DateTime* dst = buffer)
             {
-                buffer[i] = ReadDateTime(ptr, offset + i * 8);
+                MemCpy(dst, src + offset + 4, length * 8);
             }
-
-            byteSize = lenght * 8;
-
+            byteSize = length;
             return buffer;
         }
 

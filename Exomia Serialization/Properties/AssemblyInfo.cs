@@ -29,7 +29,7 @@ using System.Runtime.InteropServices;
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die einer Assembly zugeordnet sind.
 [assembly: AssemblyTitle("Exomia Serialization")]
-[assembly: AssemblyDescription("fast serialization from and to a byte array & more")]")]
+[assembly: AssemblyDescription("fast serialization from and to a byte array & more")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("exomia")]
 [assembly: AssemblyProduct("Exomia Serialization")]
