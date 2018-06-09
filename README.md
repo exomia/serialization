@@ -2,6 +2,8 @@
 
 exomia/serialization is build for a fast serialization from and to a byte array & more
 
+![](https://img.shields.io/github/issues-pr/exomia/serialization.svg) ![](https://img.shields.io/github/issues/exomia/serialization.svg)  ![](https://img.shields.io/github/last-commit/exomia/serialization.svg) ![](https://img.shields.io/github/contributors/exomia/serialization.svg) ![](https://img.shields.io/github/commit-activity/y/exomia/serialization.svg) ![](https://img.shields.io/github/languages/top/exomia/serialization.svg) ![](https://img.shields.io/github/languages/count/exomia/serialization.svg) ![](https://img.shields.io/github/license/exomia/serialization.svg)
+
 ## Example
 
 #### ByteArray-Utils
