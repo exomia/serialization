@@ -13,6 +13,7 @@ using Exomia.Serialization.Utils;
 
 static void Main(string[] args)
 {
+	byte[] buffer = new byte[0];
 	int offset = BitUtil.Write(ref buffer, 0, true); //offset: 1
 	offset += BitUtil.Write(ref buffer, offset, int.MaxValue); //offset: 5
 	offset += BitUtil.Write(ref buffer, offset, int.MaxValue + 99999L); //offset: 13
