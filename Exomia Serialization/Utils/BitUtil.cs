@@ -34,13 +34,7 @@ namespace Exomia.Serialization.Utils
     /// </summary>
     public static unsafe partial class BitUtil
     {
-        #region Variables
-
-        private static readonly Encoding s_Encoding = Encoding.Unicode;
-
-        #endregion
-
-        #region Constructors
+        private static readonly Encoding s_encoding = Encoding.Unicode;
 
         static BitUtil()
         {
@@ -49,10 +43,6 @@ namespace Exomia.Serialization.Utils
                 throw new Exception("Supports Little-Endian environments only.");
             }
         }
-
-        #endregion
-
-        #region Methods
 
         internal static void EnsureCapacity(ref byte[] bytes, int offset, int appendLength)
         {
@@ -89,7 +79,5 @@ namespace Exomia.Serialization.Utils
         [DllImport(
             "msvcrt.dll", EntryPoint = "memcpy", CallingConvention = CallingConvention.Cdecl, SetLastError = false)]
         private static extern void MemCpy(void* dest, void* src, int count);
-
-        #endregion
     }
 }

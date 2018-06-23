@@ -30,14 +30,8 @@ namespace Exomia.Serialization.Utils
 {
     public static unsafe partial class BitUtil
     {
-        #region Variables
-
         private const byte ZERO = 0;
         private const byte ONE = 1;
-
-        #endregion
-
-        #region Methods
 
         /// <summary>
         ///     writes a boolean value into the byte array to the given offset
@@ -732,10 +726,10 @@ namespace Exomia.Serialization.Utils
                 return 2;
             }
 
-            int byteCount = s_Encoding.GetByteCount(value);
+            int byteCount = s_encoding.GetByteCount(value);
             EnsureCapacity(ref bytes, offset, byteCount + 2);
             WriteUnsafe(ref bytes, offset, (ushort)byteCount);
-            return s_Encoding.GetBytes(value, 0, value.Length, bytes, offset + 2) + 2;
+            return s_encoding.GetBytes(value, 0, value.Length, bytes, offset + 2) + 2;
         }
 
         /// <summary>
@@ -775,9 +769,9 @@ namespace Exomia.Serialization.Utils
                 WriteUnsafe(ref bytes, offset, (ushort)0);
                 return;
             }
-            int byteCount = s_Encoding.GetByteCount(value);
+            int byteCount = s_encoding.GetByteCount(value);
             WriteUnsafe(ref bytes, offset, (ushort)byteCount);
-            s_Encoding.GetBytes(value, 0, value.Length, bytes, offset + 2);
+            s_encoding.GetBytes(value, 0, value.Length, bytes, offset + 2);
         }
 
         /// <summary>
@@ -797,9 +791,9 @@ namespace Exomia.Serialization.Utils
                 byteSize = 2;
                 return;
             }
-            int byteCount = s_Encoding.GetByteCount(value);
+            int byteCount = s_encoding.GetByteCount(value);
             WriteUnsafe(ref bytes, offset, (ushort)byteCount);
-            byteSize = s_Encoding.GetBytes(value, 0, value.Length, bytes, offset + 2) + 2;
+            byteSize = s_encoding.GetBytes(value, 0, value.Length, bytes, offset + 2) + 2;
         }
 
         /// <summary>
@@ -818,7 +812,7 @@ namespace Exomia.Serialization.Utils
                 WriteUnsafe(ref bytes, offset, (ushort)0);
                 return;
             }
-            int byteCount = s_Encoding.GetByteCount(value);
+            int byteCount = s_encoding.GetByteCount(value);
             WriteUnsafe(ref bytes, offset, (ushort)byteCount);
             encoding.GetBytes(value, 0, value.Length, bytes, offset + 2);
         }
@@ -841,7 +835,7 @@ namespace Exomia.Serialization.Utils
                 byteSize = 2;
                 return;
             }
-            int byteCount = s_Encoding.GetByteCount(value);
+            int byteCount = s_encoding.GetByteCount(value);
             WriteUnsafe(ref bytes, offset, (ushort)byteCount);
             byteSize = encoding.GetBytes(value, 0, value.Length, bytes, offset + 2) + 2;
         }
@@ -1141,7 +1135,5 @@ namespace Exomia.Serialization.Utils
         {
             *(long*)(dst + offset) = value.Ticks;
         }
-
-        #endregion
     }
 }

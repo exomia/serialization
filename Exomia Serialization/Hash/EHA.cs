@@ -35,8 +35,6 @@ namespace Exomia.Serialization.Hash
     /// </summary>
     public sealed unsafe class EHA
     {
-        #region Variables
-
         private const int BUFFER_SIZE = 1024 * 4;
 
         private const int BLOCK_BITS = 1024;
@@ -76,10 +74,6 @@ namespace Exomia.Serialization.Hash
         private readonly uint _h4;
         private readonly uint _h5;
 
-        #endregion
-
-        #region Constructors
-
         /// <summary>
         /// </summary>
         /// <param name="seed"></param>
@@ -94,10 +88,6 @@ namespace Exomia.Serialization.Hash
             _h4 = (R1(_h2, 30) + ~_h0 + H4) ^ s1 ^ s2;
             _h5 = (R1(_h3, 30) + ~_h1 + H5) ^ s1 ^ s2;
         }
-
-        #endregion
-
-        #region Methods
 
         private static void ProcessBlock(uint[] hash, byte* ptr, int size)
         {
@@ -378,8 +368,6 @@ namespace Exomia.Serialization.Hash
             }
             return hash;
         }
-
-        #endregion
 
         #region mix functions
 

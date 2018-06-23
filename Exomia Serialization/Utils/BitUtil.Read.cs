@@ -30,8 +30,6 @@ namespace Exomia.Serialization.Utils
 {
     public static unsafe partial class BitUtil
     {
-        #region Methods
-
         /// <summary>
         ///     reads a boolean value of the byte array from the given offset
         /// </summary>
@@ -423,7 +421,7 @@ namespace Exomia.Serialization.Utils
         public static string ReadString(ref byte[] bytes, int offset)
         {
             int count = ReadUInt16(ref bytes, offset);
-            return count > 0 ? s_Encoding.GetString(bytes, offset + 2, count) : null;
+            return count > 0 ? s_encoding.GetString(bytes, offset + 2, count) : null;
         }
 
         /// <summary>
@@ -452,7 +450,7 @@ namespace Exomia.Serialization.Utils
         {
             int count = ReadUInt16(ref bytes, offset);
             byteSize = 2 + count;
-            return count > 0 ? s_Encoding.GetString(bytes, offset + 2, count) : null;
+            return count > 0 ? s_encoding.GetString(bytes, offset + 2, count) : null;
         }
 
         /// <summary>
@@ -640,7 +638,5 @@ namespace Exomia.Serialization.Utils
         {
             return *(DateTime*)(src + offset);
         }
-
-        #endregion
     }
 }

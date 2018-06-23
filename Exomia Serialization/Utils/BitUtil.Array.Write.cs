@@ -29,8 +29,6 @@ namespace Exomia.Serialization.Utils
 {
     public static unsafe partial class BitUtil
     {
-        #region Methods
-
         /// <summary>
         ///     writes a boolean array into the byte array to the given offset
         /// </summary>
@@ -866,7 +864,7 @@ namespace Exomia.Serialization.Utils
             for (int i = 0; i < length; i++)
             {
                 WriteUnsafe(ref bytes, offset, values[i]);
-                offset += 2 + s_Encoding.GetMaxByteCount(values[i].Length);
+                offset += 2 + s_encoding.GetMaxByteCount(values[i].Length);
             }
 
             byteSize = offset - startOffset;
@@ -1143,7 +1141,5 @@ namespace Exomia.Serialization.Utils
             }
             byteSize = length * 8;
         }
-
-        #endregion
     }
 }

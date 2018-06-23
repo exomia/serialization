@@ -29,8 +29,6 @@ namespace Exomia.Serialization.Utils
 {
     public static unsafe partial class BitUtil
     {
-        #region Methods
-
         /// <summary>
         ///     reads a boolean value of the byte array from the given offset
         /// </summary>
@@ -557,7 +555,5 @@ namespace Exomia.Serialization.Utils
             byteSize = length * 8;
             return buffer;
         }
-
-        #endregion
     }
 }
