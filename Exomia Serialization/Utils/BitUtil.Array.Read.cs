@@ -405,8 +405,8 @@ namespace Exomia.Serialization.Utils
             string[] buffer = new string[length];
             for (int i = 0; i < length; i++)
             {
-                buffer[i] = ReadString(ref bytes, offset, out int bs);
-                offset += bs;
+                buffer[i] =  ReadString(ref bytes, offset, out int bs);
+                offset    += bs;
             }
             byteSize = offset - startOffset;
             return buffer;

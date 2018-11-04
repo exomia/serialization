@@ -39,7 +39,7 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="value">boolean value</param>
-        /// <returns>size in bytes writed</returns>
+        /// <returns>size in bytes written</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, bool value)
         {
@@ -80,7 +80,7 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="value">byte value</param>
-        /// <returns>size in bytes writed</returns>
+        /// <returns>size in bytes written</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, byte value)
         {
@@ -121,7 +121,7 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="value">sbyte value</param>
-        /// <returns>size in bytes writed</returns>
+        /// <returns>size in bytes written</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, sbyte value)
         {
@@ -162,7 +162,7 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="value">byte array value</param>
-        /// <returns>size in bytes writed</returns>
+        /// <returns>size in bytes written</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, byte[] value)
         {
@@ -190,7 +190,7 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="value">float value</param>
-        /// <returns>size in bytes writed</returns>
+        /// <returns>size in bytes written</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, float value)
         {
@@ -207,7 +207,7 @@ namespace Exomia.Serialization.Utils
             else
             {
                 uint num = *(uint*)&value;
-                bytes[offset] = (byte)num;
+                bytes[offset]     = (byte)num;
                 bytes[offset + 1] = (byte)(num >> 8);
                 bytes[offset + 2] = (byte)(num >> 16);
                 bytes[offset + 3] = (byte)(num >> 24);
@@ -237,7 +237,7 @@ namespace Exomia.Serialization.Utils
             else
             {
                 uint num = *(uint*)&value;
-                bytes[offset] = (byte)num;
+                bytes[offset]     = (byte)num;
                 bytes[offset + 1] = (byte)(num >> 8);
                 bytes[offset + 2] = (byte)(num >> 16);
                 bytes[offset + 3] = (byte)(num >> 24);
@@ -262,7 +262,7 @@ namespace Exomia.Serialization.Utils
             else
             {
                 uint num = *(uint*)&value;
-                *(dst + offset) = (byte)num;
+                *(dst + offset)     = (byte)num;
                 *(dst + offset + 1) = (byte)(num >> 8);
                 *(dst + offset + 2) = (byte)(num >> 16);
                 *(dst + offset + 3) = (byte)(num >> 24);
@@ -275,7 +275,7 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="value">double value</param>
-        /// <returns>size in bytes writed</returns>
+        /// <returns>size in bytes written</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, double value)
         {
@@ -292,7 +292,7 @@ namespace Exomia.Serialization.Utils
             else
             {
                 ulong num = (ulong)*(long*)&value;
-                bytes[offset] = (byte)num;
+                bytes[offset]     = (byte)num;
                 bytes[offset + 1] = (byte)(num >> 8);
                 bytes[offset + 2] = (byte)(num >> 16);
                 bytes[offset + 3] = (byte)(num >> 24);
@@ -326,7 +326,7 @@ namespace Exomia.Serialization.Utils
             else
             {
                 ulong num = (ulong)*(long*)&value;
-                bytes[offset] = (byte)num;
+                bytes[offset]     = (byte)num;
                 bytes[offset + 1] = (byte)(num >> 8);
                 bytes[offset + 2] = (byte)(num >> 16);
                 bytes[offset + 3] = (byte)(num >> 24);
@@ -355,7 +355,7 @@ namespace Exomia.Serialization.Utils
             else
             {
                 ulong num = (ulong)*(long*)&value;
-                *(dst + offset) = (byte)num;
+                *(dst + offset)     = (byte)num;
                 *(dst + offset + 1) = (byte)(num >> 8);
                 *(dst + offset + 2) = (byte)(num >> 16);
                 *(dst + offset + 3) = (byte)(num >> 24);
@@ -372,7 +372,7 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="value">short value</param>
-        /// <returns>size in bytes writed</returns>
+        /// <returns>size in bytes written</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, short value)
         {
@@ -421,7 +421,7 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="value">ushort value</param>
-        /// <returns>size in bytes writed</returns>
+        /// <returns>size in bytes written</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, ushort value)
         {
@@ -470,7 +470,7 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="value">int value</param>
-        /// <returns>size in bytes writed</returns>
+        /// <returns>size in bytes written</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, int value)
         {
@@ -520,7 +520,7 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="value">uint value</param>
-        /// <returns>size in bytes writed</returns>
+        /// <returns>size in bytes written</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, uint value)
         {
@@ -569,7 +569,7 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="value">long value</param>
-        /// <returns>size in bytes writed</returns>
+        /// <returns>size in bytes written</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, long value)
         {
@@ -618,7 +618,7 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="value">ulong value</param>
-        /// <returns>size in bytes writed</returns>
+        /// <returns>size in bytes written</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, ulong value)
         {
@@ -667,7 +667,7 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="value">char value</param>
-        /// <returns>size in bytes writed</returns>
+        /// <returns>size in bytes written</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, char value)
         {
@@ -716,7 +716,7 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="value">string value</param>
-        /// <returns>size in bytes writed</returns>
+        /// <returns>size in bytes written</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, string value)
         {
@@ -739,7 +739,7 @@ namespace Exomia.Serialization.Utils
         /// <param name="offset">offset</param>
         /// <param name="value">string value</param>
         /// <param name="encoding">specify the encoding to use</param>
-        /// <returns>size in bytes writed</returns>
+        /// <returns>size in bytes written</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, string value, Encoding encoding)
         {
@@ -946,7 +946,7 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="value">decimal value</param>
-        /// <returns>size in bytes writed</returns>
+        /// <returns>size in bytes written</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, decimal value)
         {
@@ -995,7 +995,7 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="value">Guid value</param>
-        /// <returns>size in bytes writed</returns>
+        /// <returns>size in bytes written</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, Guid value)
         {
@@ -1044,7 +1044,7 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="value">TimeSpan value</param>
-        /// <returns>size in bytes writed</returns>
+        /// <returns>size in bytes written</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, TimeSpan value)
         {
@@ -1093,7 +1093,7 @@ namespace Exomia.Serialization.Utils
         /// <param name="bytes">byte array</param>
         /// <param name="offset">offset</param>
         /// <param name="value">DateTime value</param>
-        /// <returns>size in bytes writed</returns>
+        /// <returns>size in bytes written</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, DateTime value)
         {

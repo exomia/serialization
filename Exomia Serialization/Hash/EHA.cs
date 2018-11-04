@@ -161,17 +161,17 @@ namespace Exomia.Serialization.Hash
             {
                 int offset = HASH_VALUES * i;
                 f += R1(a, 5) + F1(b, e, d) + *(words + offset + 0) + C0;
-                b = R1(b, 29);
+                b =  R1(b, 29);
                 e += R1(f, 4) + F1(f, c, d) + *(words + offset + 1) + C0;
-                f = R1(f, 29);
+                f =  R1(f, 29);
                 d += R1(e, 4) + F1(a, b, c) + *(words + offset + 2) + C0;
-                a = R1(a, 27);
+                a =  R1(a, 27);
                 c += R1(d, 5) + F1(e, a, b) + *(words + offset + 3) + C0;
-                e = R1(e, 27);
+                e =  R1(e, 27);
                 b += R1(c, 8) + F1(d, f, a) + *(words + offset + 4) + C0;
-                d = R1(d, 30);
+                d =  R1(d, 30);
                 a += R1(b, 8) + F1(f, d, e) + *(words + offset + 5) + C0;
-                c = R1(c, 30);
+                c =  R1(c, 30);
             }
 
             // second round
@@ -179,17 +179,17 @@ namespace Exomia.Serialization.Hash
             {
                 int offset = HASH_VALUES * i;
                 f += R1(a, 3) + F2(b, a, d) + *(words + offset + 0) + C1;
-                b = R1(b, 22);
+                b =  R1(b, 22);
                 e += R1(a, 8) + F2(f, c, d) + *(words + offset + 1) + C1;
-                f = R1(f, 22);
+                f =  R1(f, 22);
                 d += R1(e, 8) + F2(a, b, c) + *(words + offset + 2) + C1;
-                a = R1(a, 12);
+                a =  R1(a, 12);
                 c += R1(d, 6) + F2(e, a, b) + *(words + offset + 3) + C1;
-                e = R1(e, 31);
+                e =  R1(e, 31);
                 b += R1(c, 4) + F2(d, e, f) + *(words + offset + 4) + C1;
-                d = R1(d, 18);
+                d =  R1(d, 18);
                 a += R1(b, 4) + F2(c, d, e) + *(words + offset + 5) + C1;
-                c = R1(c, 31);
+                c =  R1(c, 31);
             }
 
             // third round
@@ -197,17 +197,17 @@ namespace Exomia.Serialization.Hash
             {
                 int offset = HASH_VALUES * i;
                 f += R1(a, 5) + F3(e, b, c) + *(words + offset + 0) + C2;
-                b = R1(b, 27);
+                b =  R1(b, 27);
                 e += R1(a, 3) + F3(b, c, d) + *(words + offset + 1) + C2;
-                f = R1(f, 27);
+                f =  R1(f, 27);
                 d += R1(e, 3) + F3(a, b, d) + *(words + offset + 2) + C2;
-                a = R1(a, 28);
+                a =  R1(a, 28);
                 c += R1(d, 5) + F3(e, a, f) + *(words + offset + 3) + C2;
-                e = R1(e, 28);
+                e =  R1(e, 28);
                 b += R1(c, 7) + F3(d, e, a) + *(words + offset + 4) + C2;
-                d = R1(d, 30);
+                d =  R1(d, 30);
                 a += R1(b, 7) + F3(c, d, e) + *(words + offset + 5) + C2;
-                c = R1(c, 30);
+                c =  R1(c, 30);
             }
 
             // fourth round
@@ -215,17 +215,17 @@ namespace Exomia.Serialization.Hash
             {
                 int offset = HASH_VALUES * i;
                 f += R1(a, 9) + F4(b, a, c) + *(words + offset + 0) + C3;
-                b = R1(b, 26);
+                b =  R1(b, 26);
                 e += R1(a, 9) + F4(f, c, d) + *(words + offset + 1) + C3;
-                f = R1(f, 26);
+                f =  R1(f, 26);
                 d += R1(e, 7) + F4(a, b, c) + *(words + offset + 2) + C3;
-                a = R1(a, 23);
+                a =  R1(a, 23);
                 c += R1(d, 7) + F4(d, a, b) + *(words + offset + 3) + C3;
-                e = R1(e, 23);
+                e =  R1(e, 23);
                 b += R1(c, 5) + F4(d, f, a) + *(words + offset + 4) + C3;
-                d = R1(d, 15);
+                d =  R1(d, 15);
                 a += R1(b, 5) + F4(c, d, e) + *(words + offset + 5) + C3;
-                c = R1(c, 15);
+                c =  R1(c, 15);
             }
 
             //update hash
@@ -267,11 +267,11 @@ namespace Exomia.Serialization.Hash
             {
                 for (int i = 0; i < HASH_VALUES; ++i)
                 {
-                    *(ptr + offset + 0) = (byte)(hash[i] & 0xFF);
-                    *(ptr + offset + 1) = (byte)((hash[i] >> 8) & 0xFF);
-                    *(ptr + offset + 2) = (byte)((hash[i] >> 16) & 0xFF);
-                    *(ptr + offset + 3) = (byte)((hash[i] >> 24) & 0xFF);
-                    offset += 4;
+                    *(ptr + offset + 0) =  (byte)(hash[i] & 0xFF);
+                    *(ptr + offset + 1) =  (byte)((hash[i] >> 8) & 0xFF);
+                    *(ptr + offset + 2) =  (byte)((hash[i] >> 16) & 0xFF);
+                    *(ptr + offset + 3) =  (byte)((hash[i] >> 24) & 0xFF);
+                    offset              += 4;
                 }
             }
             return buffer;
