@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exomia Serialization", "Exomia Serialization\Exomia Serialization.csproj", "{47361845-E9FC-4C08-B803-730F73343AC3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exomia.Serialization", "Exomia.Serialization\Exomia.Serialization.csproj", "{47361845-E9FC-4C08-B803-730F73343AC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
