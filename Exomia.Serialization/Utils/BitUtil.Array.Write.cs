@@ -27,15 +27,20 @@ using System.Runtime.CompilerServices;
 
 namespace Exomia.Serialization.Utils
 {
+    /// <content>
+    ///     A bit utility.
+    /// </content>
     public static unsafe partial class BitUtil
     {
         /// <summary>
-        ///     writes a boolean array into the byte array to the given offset
+        ///     writes a boolean array into the byte array to the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">boolean array</param>
-        /// <returns>size in bytes written</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <param name="values"> boolean array. </param>
+        /// <returns>
+        ///     size in bytes written.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, bool[] values)
         {
@@ -55,13 +60,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a boolean array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a boolean array into the byte array to the given offset does not ensure capacity
+        ///     of the byte array.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">boolean array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="bytes">    [in,out] byte array. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   boolean array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(ref byte[] bytes, int offset, bool[] values, out int byteSize)
         {
@@ -78,13 +83,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a boolean array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a boolean array into the byte array to the given offset does not ensure capacity
+        ///     of the byte array.
         /// </summary>
-        /// <param name="dst">byte pointer</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">boolean array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="dst">      [in,out] byte pointer. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   boolean array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(byte* dst, int offset, bool[] values, out int byteSize)
         {
@@ -98,13 +103,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a byte array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a byte array into the byte array to the given offset does not ensure capacity of
+        ///     the byte array.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">byte array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="bytes">    [in,out] byte array. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   byte array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(ref byte[] bytes, int offset, byte[] values, out int byteSize)
         {
@@ -121,13 +126,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a byte array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a byte array into the byte array to the given offset does not ensure capacity of
+        ///     the byte array.
         /// </summary>
-        /// <param name="dst">byte pointer</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">byte array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="dst">      [in,out] byte pointer. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   byte array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(byte* dst, int offset, byte[] values, out int byteSize)
         {
@@ -141,12 +146,14 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a sbyte array into the byte array to the given offset
+        ///     writes a sbyte array into the byte array to the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">sbyte array</param>
-        /// <returns>size in bytes written</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <param name="values"> sbyte array. </param>
+        /// <returns>
+        ///     size in bytes written.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, sbyte[] values)
         {
@@ -166,13 +173,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a sbyte array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a sbyte array into the byte array to the given offset does not ensure capacity of
+        ///     the byte array.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">sbyte array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="bytes">    [in,out] byte array. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   sbyte array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(ref byte[] bytes, int offset, sbyte[] values, out int byteSize)
         {
@@ -189,13 +196,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a sbyte array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a sbyte array into the byte array to the given offset does not ensure capacity of
+        ///     the byte array.
         /// </summary>
-        /// <param name="dst">byte pointer</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">sbyte array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="dst">      [in,out] byte pointer. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   sbyte array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(byte* dst, int offset, sbyte[] values, out int byteSize)
         {
@@ -209,12 +216,14 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a float array into the byte array to the given offset
+        ///     writes a float array into the byte array to the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">float array</param>
-        /// <returns>size in bytes written</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <param name="values"> float array. </param>
+        /// <returns>
+        ///     size in bytes written.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, float[] values)
         {
@@ -234,13 +243,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a float array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a float array into the byte array to the given offset does not ensure capacity of
+        ///     the byte array.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">float array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="bytes">    [in,out] byte array. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   float array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(ref byte[] bytes, int offset, float[] values, out int byteSize)
         {
@@ -257,13 +266,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a float array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a float array into the byte array to the given offset does not ensure capacity of
+        ///     the byte array.
         /// </summary>
-        /// <param name="dst">byte pointer</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">float array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="dst">      [in,out] byte pointer. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   float array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(byte* dst, int offset, float[] values, out int byteSize)
         {
@@ -277,12 +286,14 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a double array into the byte array to the given offset
+        ///     writes a double array into the byte array to the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">double array</param>
-        /// <returns>size in bytes written</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <param name="values"> double array. </param>
+        /// <returns>
+        ///     size in bytes written.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, double[] values)
         {
@@ -302,13 +313,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a double array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a double array into the byte array to the given offset does not ensure capacity of
+        ///     the byte array.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">double array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="bytes">    [in,out] byte array. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   double array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(ref byte[] bytes, int offset, double[] values, out int byteSize)
         {
@@ -325,13 +336,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a double array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a double array into the byte array to the given offset does not ensure capacity of
+        ///     the byte array.
         /// </summary>
-        /// <param name="dst">byte pointer</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">double array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="dst">      [in,out] byte pointer. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   double array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(byte* dst, int offset, double[] values, out int byteSize)
         {
@@ -345,12 +356,14 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a short array into the byte array to the given offset
+        ///     writes a short array into the byte array to the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">short array</param>
-        /// <returns>size in bytes written</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <param name="values"> short array. </param>
+        /// <returns>
+        ///     size in bytes written.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, short[] values)
         {
@@ -370,13 +383,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a short array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a short array into the byte array to the given offset does not ensure capacity of
+        ///     the byte array.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">short array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="bytes">    [in,out] byte array. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   short array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(ref byte[] bytes, int offset, short[] values, out int byteSize)
         {
@@ -393,13 +406,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a short array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a short array into the byte array to the given offset does not ensure capacity of
+        ///     the byte array.
         /// </summary>
-        /// <param name="dst">byte pointer</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">short array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="dst">      [in,out] byte pointer. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   short array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(byte* dst, int offset, short[] values, out int byteSize)
         {
@@ -413,12 +426,14 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a ushort array into the byte array to the given offset
+        ///     writes a ushort array into the byte array to the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">ushort array</param>
-        /// <returns>size in bytes written</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <param name="values"> ushort array. </param>
+        /// <returns>
+        ///     size in bytes written.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, ushort[] values)
         {
@@ -438,13 +453,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a ushort array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a ushort array into the byte array to the given offset does not ensure capacity of
+        ///     the byte array.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">ushort array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="bytes">    [in,out] byte array. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   ushort array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(ref byte[] bytes, int offset, ushort[] values, out int byteSize)
         {
@@ -461,13 +476,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a ushort array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a ushort array into the byte array to the given offset does not ensure capacity of
+        ///     the byte array.
         /// </summary>
-        /// <param name="dst">byte pointer</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">ushort array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="dst">      [in,out] byte pointer. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   ushort array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(byte* dst, int offset, ushort[] values, out int byteSize)
         {
@@ -481,12 +496,14 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a int array into the byte array to the given offset
+        ///     writes a int array into the byte array to the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">int array</param>
-        /// <returns>size in bytes written</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <param name="values"> int array. </param>
+        /// <returns>
+        ///     size in bytes written.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, int[] values)
         {
@@ -506,13 +523,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a int array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a int array into the byte array to the given offset does not ensure capacity of
+        ///     the byte array.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">int array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="bytes">    [in,out] byte array. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   int array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(ref byte[] bytes, int offset, int[] values, out int byteSize)
         {
@@ -529,13 +546,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a int array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a int array into the byte array to the given offset does not ensure capacity of
+        ///     the byte array.
         /// </summary>
-        /// <param name="dst">byte pointer</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">int array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="dst">      [in,out] byte pointer. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   int array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(byte* dst, int offset, int[] values, out int byteSize)
         {
@@ -549,12 +566,14 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a uint array into the byte array to the given offset
+        ///     writes a uint array into the byte array to the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">uint array</param>
-        /// <returns>size in bytes written</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <param name="values"> uint array. </param>
+        /// <returns>
+        ///     size in bytes written.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, uint[] values)
         {
@@ -574,13 +593,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a uint array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a uint array into the byte array to the given offset does not ensure capacity of
+        ///     the byte array.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">uint array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="bytes">    [in,out] byte array. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   uint array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(ref byte[] bytes, int offset, uint[] values, out int byteSize)
         {
@@ -597,13 +616,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a uint array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a uint array into the byte array to the given offset does not ensure capacity of
+        ///     the byte array.
         /// </summary>
-        /// <param name="dst">byte pointer</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">uint array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="dst">      [in,out] byte pointer. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   uint array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(byte* dst, int offset, uint[] values, out int byteSize)
         {
@@ -617,12 +636,14 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a long array into the byte array to the given offset
+        ///     writes a long array into the byte array to the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">long array</param>
-        /// <returns>size in bytes written</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <param name="values"> long array. </param>
+        /// <returns>
+        ///     size in bytes written.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, long[] values)
         {
@@ -642,13 +663,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a ulong array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a ulong array into the byte array to the given offset does not ensure capacity of
+        ///     the byte array.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">long array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="bytes">    [in,out] byte array. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   long array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(ref byte[] bytes, int offset, long[] values, out int byteSize)
         {
@@ -665,13 +686,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a long array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a long array into the byte array to the given offset does not ensure capacity of
+        ///     the byte array.
         /// </summary>
-        /// <param name="dst">byte pointer</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">long array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="dst">      [in,out] byte pointer. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   long array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(byte* dst, int offset, long[] values, out int byteSize)
         {
@@ -685,12 +706,14 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a ulong array into the byte array to the given offset
+        ///     writes a ulong array into the byte array to the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">ulong array</param>
-        /// <returns>size in bytes written</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <param name="values"> ulong array. </param>
+        /// <returns>
+        ///     size in bytes written.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, ulong[] values)
         {
@@ -710,13 +733,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a long array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a long array into the byte array to the given offset does not ensure capacity of
+        ///     the byte array.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">ulong array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="bytes">    [in,out] byte array. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   ulong array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(ref byte[] bytes, int offset, ulong[] values, out int byteSize)
         {
@@ -733,13 +756,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a ulong array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a ulong array into the byte array to the given offset does not ensure capacity of
+        ///     the byte array.
         /// </summary>
-        /// <param name="dst">byte pointer</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">ulong array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="dst">      [in,out] byte pointer. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   ulong array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(byte* dst, int offset, ulong[] values, out int byteSize)
         {
@@ -753,12 +776,14 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a char array into the byte array to the given offset
+        ///     writes a char array into the byte array to the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">char array</param>
-        /// <returns>size in bytes written</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <param name="values"> char array. </param>
+        /// <returns>
+        ///     size in bytes written.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, char[] values)
         {
@@ -778,13 +803,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a char array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a char array into the byte array to the given offset does not ensure capacity of
+        ///     the byte array.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">char array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="bytes">    [in,out] byte array. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   char array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(ref byte[] bytes, int offset, char[] values, out int byteSize)
         {
@@ -801,13 +826,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a char array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a char array into the byte array to the given offset does not ensure capacity of
+        ///     the byte array.
         /// </summary>
-        /// <param name="dst">byte pointer</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">char array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="dst">      [in,out] byte pointer. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   char array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(byte* dst, int offset, char[] values, out int byteSize)
         {
@@ -821,12 +846,14 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a string array into the byte array to the given offset
+        ///     writes a string array into the byte array to the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">string array</param>
-        /// <returns>size in bytes written</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <param name="values"> string array. </param>
+        /// <returns>
+        ///     size in bytes written.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, string[] values)
         {
@@ -845,13 +872,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a string array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a string array into the byte array to the given offset does not ensure capacity of
+        ///     the byte array.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">string array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="bytes">    [in,out] byte array. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   string array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(ref byte[] bytes, int offset, string[] values, out int byteSize)
         {
@@ -871,12 +898,14 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a decimal array into the byte array to the given offset
+        ///     writes a decimal array into the byte array to the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">decimal array</param>
-        /// <returns>size in bytes written</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <param name="values"> decimal array. </param>
+        /// <returns>
+        ///     size in bytes written.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, decimal[] values)
         {
@@ -896,13 +925,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a decimal array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a decimal array into the byte array to the given offset does not ensure capacity
+        ///     of the byte array.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">decimal array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="bytes">    [in,out] byte array. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   decimal array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(ref byte[] bytes, int offset, decimal[] values, out int byteSize)
         {
@@ -919,13 +948,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a decimal array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a decimal array into the byte array to the given offset does not ensure capacity
+        ///     of the byte array.
         /// </summary>
-        /// <param name="dst">byte pointer</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">decimal array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="dst">      [in,out] byte pointer. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   decimal array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(byte* dst, int offset, decimal[] values, out int byteSize)
         {
@@ -939,12 +968,14 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a Guid array into the byte array to the given offset
+        ///     writes a Guid array into the byte array to the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">Guid array</param>
-        /// <returns>size in bytes written</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <param name="values"> Guid array. </param>
+        /// <returns>
+        ///     size in bytes written.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, Guid[] values)
         {
@@ -964,13 +995,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a Guid array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a Guid array into the byte array to the given offset does not ensure capacity of
+        ///     the byte array.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">Guid array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="bytes">    [in,out] byte array. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   Guid array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(ref byte[] bytes, int offset, Guid[] values, out int byteSize)
         {
@@ -987,13 +1018,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a Guid array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a Guid array into the byte array to the given offset does not ensure capacity of
+        ///     the byte array.
         /// </summary>
-        /// <param name="dst">byte pointer</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">Guid array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="dst">      [in,out] byte pointer. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   Guid array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(byte* dst, int offset, Guid[] values, out int byteSize)
         {
@@ -1007,12 +1038,14 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a TimeSpan array into the byte array to the given offset
+        ///     writes a TimeSpan array into the byte array to the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">TimeSpan array</param>
-        /// <returns>size in bytes written</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <param name="values"> TimeSpan array. </param>
+        /// <returns>
+        ///     size in bytes written.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, TimeSpan[] values)
         {
@@ -1032,13 +1065,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a TimeSpan array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a TimeSpan array into the byte array to the given offset does not ensure capacity
+        ///     of the byte array.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">TimeSpan array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="bytes">    [in,out] byte array. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   TimeSpan array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(ref byte[] bytes, int offset, TimeSpan[] values, out int byteSize)
         {
@@ -1055,13 +1088,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a TimeSpan array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a TimeSpan array into the byte array to the given offset does not ensure capacity
+        ///     of the byte array.
         /// </summary>
-        /// <param name="dst">byte pointer</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">TimeSpan array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="dst">      [in,out] byte pointer. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   TimeSpan array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(byte* dst, int offset, TimeSpan[] values, out int byteSize)
         {
@@ -1075,12 +1108,14 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a DateTime array into the byte array to the given offset
+        ///     writes a DateTime array into the byte array to the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">DateTime array</param>
-        /// <returns>size in bytes written</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <param name="values"> DateTime array. </param>
+        /// <returns>
+        ///     size in bytes written.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Write(ref byte[] bytes, int offset, DateTime[] values)
         {
@@ -1100,13 +1135,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a DateTime array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a DateTime array into the byte array to the given offset does not ensure capacity
+        ///     of the byte array.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">DateTime array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="bytes">    [in,out] byte array. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   DateTime array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(ref byte[] bytes, int offset, DateTime[] values, out int byteSize)
         {
@@ -1123,13 +1158,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     writes a DateTime array into the byte array to the given offset
-        ///     does not ensure capacity of the byte array
+        ///     writes a DateTime array into the byte array to the given offset does not ensure capacity
+        ///     of the byte array.
         /// </summary>
-        /// <param name="dst">byte pointer</param>
-        /// <param name="offset">offset</param>
-        /// <param name="values">DateTime array</param>
-        /// <param name="byteSize">out sizeof bytes used</param>
+        /// <param name="dst">      [in,out] byte pointer. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="values">   DateTime array. </param>
+        /// <param name="byteSize"> [out] out sizeof bytes used. </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteUnsafe(byte* dst, int offset, DateTime[] values, out int byteSize)
         {

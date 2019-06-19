@@ -4,7 +4,7 @@
     <Authors>exomia</Authors>
     <Description>fast serialization from and to a byte array and more</Description>
     <Copyright>Copyright © 2019 exomia</Copyright>
-    <Version>1.0.1.4</Version>
+    <Version>1.0.1.5</Version>
     <PackageLicenseUrl>https://raw.githubusercontent.com/exomia/serialization/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/exomia/serialization</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>

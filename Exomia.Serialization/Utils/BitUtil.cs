@@ -30,12 +30,19 @@ using System.Text;
 namespace Exomia.Serialization.Utils
 {
     /// <summary>
-    ///     fast binary read and write operations on a byte array
+    ///     fast binary read and write operations on a byte array.
     /// </summary>
     public static unsafe partial class BitUtil
     {
+        /// <summary>
+        ///     The encoding.
+        /// </summary>
         private static readonly Encoding s_encoding = Encoding.Unicode;
 
+        /// <summary>
+        ///     Initializes static members of the <see cref="BitUtil"/> class.
+        /// </summary>
+        /// <exception cref="Exception"> Thrown when an exception error condition occurs. </exception>
         static BitUtil()
         {
             if (!BitConverter.IsLittleEndian)
@@ -44,6 +51,12 @@ namespace Exomia.Serialization.Utils
             }
         }
 
+        /// <summary>
+        ///     Ensures that capacity.
+        /// </summary>
+        /// <param name="bytes">        [in,out] The bytes. </param>
+        /// <param name="offset">       The offset. </param>
+        /// <param name="appendLength"> Length of the append. </param>
         internal static void EnsureCapacity(ref byte[] bytes, int offset, int appendLength)
         {
             int newLength = offset + appendLength;
@@ -59,6 +72,11 @@ namespace Exomia.Serialization.Utils
             }
         }
 
+        /// <summary>
+        ///     Resizes.
+        /// </summary>
+        /// <param name="array">   [in,out] The array. </param>
+        /// <param name="newSize"> Size of the new. </param>
         internal static void Resize(ref byte[] array, int newSize)
         {
             if (array == null)
@@ -75,6 +93,12 @@ namespace Exomia.Serialization.Utils
             }
         }
 
+        /// <summary>
+        ///     Memory copy.
+        /// </summary>
+        /// <param name="dest">  [in,out] If non-null, destination for the. </param>
+        /// <param name="src">   [in,out] If non-null, source for the. </param>
+        /// <param name="count"> Number of. </param>
         [SuppressUnmanagedCodeSecurity]
         [DllImport(
             "msvcrt.dll", EntryPoint = "memcpy", CallingConvention = CallingConvention.Cdecl, SetLastError = false)]

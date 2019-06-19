@@ -31,52 +31,140 @@ using System.Text;
 namespace Exomia.Serialization.Hash
 {
     /// <summary>
-    ///     exomia hash algorithm
+    ///     exomia hash algorithm.
     /// </summary>
     public sealed unsafe class EHA
     {
+        /// <summary>
+        ///     Size of the buffer.
+        /// </summary>
         private const int BUFFER_SIZE = 1024 * 4;
 
+        /// <summary>
+        ///     The block bits.
+        /// </summary>
         private const int BLOCK_BITS = 1024;
+        /// <summary>
+        ///     Size of the block.
+        /// </summary>
         private const int BLOCK_SIZE = BLOCK_BITS / 8;
 
+        /// <summary>
+        ///     The hash bits.
+        /// </summary>
         private const int HASH_BITS = 192;
+        /// <summary>
+        ///     Size of the hash.
+        /// </summary>
         private const int HASH_SIZE = HASH_BITS / 8;
+        /// <summary>
+        ///     The hash values.
+        /// </summary>
         private const int HASH_VALUES = HASH_SIZE / 4;
 
+        /// <summary>
+        ///     Length of the block.
+        /// </summary>
         private const int BLOCK_LENGTH = BLOCK_SIZE / 4;
 
+        /// <summary>
+        ///     Size of the words.
+        /// </summary>
         private const int WORDS_SIZE = BLOCK_LENGTH * HASH_VALUES;
 
+        /// <summary>
+        ///     The rounds.
+        /// </summary>
         private const int ROUNDS = 4;
+        /// <summary>
+        ///     The rounds offset.
+        /// </summary>
         private const int ROUNDS_OFFSET = BLOCK_LENGTH / ROUNDS;
 
+        /// <summary>
+        ///     The h 0.
+        /// </summary>
         private const uint H0 = 0x209536F9;
+        /// <summary>
+        ///     The first h.
+        /// </summary>
         private const uint H1 = 0x1267A4BB;
+        /// <summary>
+        ///     The second h.
+        /// </summary>
         private const uint H2 = 0xEE1F88D;
+        /// <summary>
+        ///     The third h.
+        /// </summary>
         private const uint H3 = 0xA4B0B65;
+        /// <summary>
+        ///     The fourth h.
+        /// </summary>
         private const uint H4 = 0x350798D7;
+        /// <summary>
+        ///     The fifth h.
+        /// </summary>
         private const uint H5 = 0x2AE59A2F;
 
+        /// <summary>
+        ///     The c 0.
+        /// </summary>
         private const uint C0 = 0xEEBB2A29;
+        /// <summary>
+        ///     The first c.
+        /// </summary>
         private const uint C1 = 0x214EE939;
+        /// <summary>
+        ///     The second c.
+        /// </summary>
         private const uint C2 = 0x117DFA89;
+        /// <summary>
+        ///     The third c.
+        /// </summary>
         private const uint C3 = 0xFF8F44BB;
+        /// <summary>
+        ///     The fourth c.
+        /// </summary>
         private const uint C4 = 0xD28146D5;
+        /// <summary>
+        ///     The fifth c.
+        /// </summary>
         private const uint C5 = 0x8EA96F89;
 
+        /// <summary>
+        ///     The one.
+        /// </summary>
         private const byte ONE = 0b10000000;
 
+        /// <summary>
+        ///     The 0.
+        /// </summary>
         private readonly uint _h0;
+        /// <summary>
+        ///     The first h.
+        /// </summary>
         private readonly uint _h1;
+        /// <summary>
+        ///     The second h.
+        /// </summary>
         private readonly uint _h2;
+        /// <summary>
+        ///     The third h.
+        /// </summary>
         private readonly uint _h3;
+        /// <summary>
+        ///     The fourth h.
+        /// </summary>
         private readonly uint _h4;
+        /// <summary>
+        ///     The fifth h.
+        /// </summary>
         private readonly uint _h5;
 
         /// <summary>
+        ///     Initializes a new instance of the <see cref="EHA"/> class.
         /// </summary>
-        /// <param name="seed"></param>
+        /// <param name="seed"> The seed. </param>
         public EHA(long seed)
         {
             uint s1 = (uint)seed;
@@ -89,6 +177,12 @@ namespace Exomia.Serialization.Hash
             _h5 = (R1(_h3, 30) + ~_h1 + H5) ^ s1 ^ s2;
         }
 
+        /// <summary>
+        ///     Process a block with 1024bit = 32x32-bit words.
+        /// </summary>
+        /// <param name="hash"> The hash. </param>
+        /// <param name="ptr">  [in,out] If non-null, the pointer. </param>
+        /// <param name="size"> The size. </param>
         private static void ProcessBlock(uint[] hash, byte* ptr, int size)
         {
             // DEFAULT FULL BLOCK
@@ -130,8 +224,10 @@ namespace Exomia.Serialization.Hash
         }
 
         /// <summary>
-        ///     Process a block with 1024bit = 32x32-bit words
+        ///     Process a block with 1024bit = 32x32-bit words.
         /// </summary>
+        /// <param name="hash"> The hash. </param>
+        /// <param name="ptr">  [in,out] If non-null, the pointer. </param>
         private static void ProcessBlock(uint[] hash, uint* ptr)
         {
             //get last hash
@@ -238,13 +334,16 @@ namespace Exomia.Serialization.Hash
         }
 
         /// <summary>
-        ///     memset call
-        ///     Sets the first num bytes of the block of memory pointed by ptr to the specified value (interpreted as an unsigned
-        ///     char).
+        ///     memset call.
+        ///     Sets the first num bytes of the block of memory pointed by ptr to the
+        ///     specified value (interpreted as an unsigned char).
         /// </summary>
-        /// <param name="dest">destination addr</param>
-        /// <param name="value">value to be set</param>
-        /// <param name="count">count of bytes</param>
+        /// <param name="dest">  [in,out] destination addr. </param>
+        /// <param name="value"> value to be set. </param>
+        /// <param name="count"> count of bytes. </param>
+        /// <returns>
+        ///     Null if it fails, else a void*.
+        /// </returns>
         [SuppressUnmanagedCodeSecurity]
         [DllImport(
             "msvcrt.dll", EntryPoint = "memset", CallingConvention = CallingConvention.Cdecl, SetLastError = false)]
@@ -254,10 +353,12 @@ namespace Exomia.Serialization.Hash
             int count);
 
         /// <summary>
-        ///     generates a hash from a given stream and returns it as a byte array
+        ///     generates a hash from a given stream and returns it as a byte array.
         /// </summary>
-        /// <param name="stream">input</param>
-        /// <returns>byte array</returns>
+        /// <param name="stream"> input. </param>
+        /// <returns>
+        ///     byte array.
+        /// </returns>
         public byte[] ToBytes(Stream stream)
         {
             uint[] hash = Hash(stream);
@@ -278,10 +379,12 @@ namespace Exomia.Serialization.Hash
         }
 
         /// <summary>
-        ///     generates a hash from given string data and returns it as a hex string
+        ///     generates a hash from given string data and returns it as a hex string.
         /// </summary>
-        /// <param name="data">data</param>
-        /// <returns>hex string</returns>
+        /// <param name="data"> data. </param>
+        /// <returns>
+        ///     hex string.
+        /// </returns>
         public byte[] ToBytes(string data)
         {
             using (MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(data)))
@@ -291,10 +394,12 @@ namespace Exomia.Serialization.Hash
         }
 
         /// <summary>
-        ///     generates a hash from given string data and returns it as a hex string
+        ///     generates a hash from given string data and returns it as a hex string.
         /// </summary>
-        /// <param name="data">data</param>
-        /// <returns>hex string</returns>
+        /// <param name="data"> data. </param>
+        /// <returns>
+        ///     hex string.
+        /// </returns>
         public byte[] ToBytes(byte[] data)
         {
             using (MemoryStream ms = new MemoryStream(data))
@@ -304,10 +409,12 @@ namespace Exomia.Serialization.Hash
         }
 
         /// <summary>
-        ///     generates a hash from a given stream and returns it as a hex string
+        ///     generates a hash from a given stream and returns it as a hex string.
         /// </summary>
-        /// <param name="stream">input</param>
-        /// <returns>hex string</returns>
+        /// <param name="stream"> input. </param>
+        /// <returns>
+        ///     hex string.
+        /// </returns>
         public string ToString(Stream stream)
         {
             uint[] hash = Hash(stream);
@@ -322,10 +429,12 @@ namespace Exomia.Serialization.Hash
         }
 
         /// <summary>
-        ///     generates a hash from given string data and returns it as a hex string
+        ///     generates a hash from given string data and returns it as a hex string.
         /// </summary>
-        /// <param name="data">data</param>
-        /// <returns>hex string</returns>
+        /// <param name="data"> data. </param>
+        /// <returns>
+        ///     hex string.
+        /// </returns>
         public string ToString(string data)
         {
             using (MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(data)))
@@ -335,10 +444,12 @@ namespace Exomia.Serialization.Hash
         }
 
         /// <summary>
-        ///     generates a hash from given string data and returns it as a hex string
+        ///     generates a hash from given string data and returns it as a hex string.
         /// </summary>
-        /// <param name="data">data</param>
-        /// <returns>hex string</returns>
+        /// <param name="data"> data. </param>
+        /// <returns>
+        ///     hex string.
+        /// </returns>
         public string ToString(byte[] data)
         {
             using (MemoryStream ms = new MemoryStream(data))
@@ -347,6 +458,13 @@ namespace Exomia.Serialization.Hash
             }
         }
 
+        /// <summary>
+        ///     Hashes the given stream.
+        /// </summary>
+        /// <param name="stream"> input. </param>
+        /// <returns>
+        ///     An uint[].
+        /// </returns>
         private uint[] Hash(Stream stream)
         {
             uint[] hash = new uint[HASH_VALUES] { _h0, _h1, _h2, _h3, _h4, _h5 };
@@ -371,30 +489,74 @@ namespace Exomia.Serialization.Hash
 
         #region mix functions
 
+        /// <summary>
+        ///     F 1.
+        /// </summary>
+        /// <param name="a"> The uint to process. </param>
+        /// <param name="b"> The int to process. </param>
+        /// <param name="c"> The uint to process. </param>
+        /// <returns>
+        ///     An uint.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static uint F1(uint a, uint b, uint c)
         {
             return c ^ ((b ^ a) & c);
         }
 
+        /// <summary>
+        ///     F 2.
+        /// </summary>
+        /// <param name="a"> The uint to process. </param>
+        /// <param name="b"> The int to process. </param>
+        /// <param name="c"> The uint to process. </param>
+        /// <returns>
+        ///     An uint.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static uint F2(uint a, uint b, uint c)
         {
             return a ^ b ^ c;
         }
 
+        /// <summary>
+        ///     F 3.
+        /// </summary>
+        /// <param name="a"> The uint to process. </param>
+        /// <param name="b"> The int to process. </param>
+        /// <param name="c"> The uint to process. </param>
+        /// <returns>
+        ///     An uint.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static uint F3(uint a, uint b, uint c)
         {
             return (a & b) | (a & c) | (b & c);
         }
 
+        /// <summary>
+        ///     F 4.
+        /// </summary>
+        /// <param name="a"> The uint to process. </param>
+        /// <param name="b"> The int to process. </param>
+        /// <param name="c"> The uint to process. </param>
+        /// <returns>
+        ///     An uint.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static uint F4(uint a, uint b, uint c)
         {
             return (a & b) | ((c ^ ~a) & b) | ~c;
         }
 
+        /// <summary>
+        ///     R 1.
+        /// </summary>
+        /// <param name="a"> The uint to process. </param>
+        /// <param name="b"> The int to process. </param>
+        /// <returns>
+        ///     An uint.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static uint R1(uint a, int b)
         {

@@ -28,14 +28,19 @@ using System.Text;
 
 namespace Exomia.Serialization.Utils
 {
+    /// <content>
+    ///     A bit utility.
+    /// </content>
     public static unsafe partial class BitUtil
     {
         /// <summary>
-        ///     reads a boolean value of the byte array from the given offset
+        ///     reads a boolean value of the byte array from the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>boolean value</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     boolean value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool ReadBoolean(ref byte[] bytes, int offset)
         {
@@ -43,11 +48,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a bool value of the byte array from the given offset
+        ///     reads a bool value of the byte array from the given offset.
         /// </summary>
-        /// <param name="src">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>bool value</returns>
+        /// <param name="src">    [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     bool value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool ReadBoolean(byte* src, int offset)
         {
@@ -55,11 +62,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a byte value of the byte array from the given offset
+        ///     reads a byte value of the byte array from the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>byte value</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     byte value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static byte ReadByte(ref byte[] bytes, int offset)
         {
@@ -67,11 +76,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a byte value of the byte array from the given offset
+        ///     reads a byte value of the byte array from the given offset.
         /// </summary>
-        /// <param name="src">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>byte value</returns>
+        /// <param name="src">    [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     byte value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static byte ReadByte(byte* src, int offset)
         {
@@ -79,11 +90,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a sbyte value of the byte array from the given offset
+        ///     reads a sbyte value of the byte array from the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>sbyte value</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     sbyte value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static sbyte ReadSByte(ref byte[] bytes, int offset)
         {
@@ -91,11 +104,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a sbyte value of the byte array from the given offset
+        ///     reads a sbyte value of the byte array from the given offset.
         /// </summary>
-        /// <param name="src">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>sbyte value</returns>
+        /// <param name="src">    [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     sbyte value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static sbyte ReadSByte(byte* src, int offset)
         {
@@ -103,12 +118,14 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a byte array of the byte array from the given offset
+        ///     reads a byte array of the byte array from the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="count">bytes to read</param>
-        /// <returns>byte array</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <param name="count">  bytes to read. </param>
+        /// <returns>
+        ///     byte array.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static byte[] ReadBytes(ref byte[] bytes, int offset, int count)
         {
@@ -118,11 +135,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a float value of the byte array from the given offset
+        ///     reads a float value of the byte array from the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>float value</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     float value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float ReadSingle(ref byte[] bytes, int offset)
         {
@@ -143,11 +162,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a float value of the byte array from the given offset
+        ///     reads a float value of the byte array from the given offset.
         /// </summary>
-        /// <param name="src">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>float value</returns>
+        /// <param name="src">    [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     float value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float ReadSingle(byte* src, int offset)
         {
@@ -164,11 +185,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a double value of the byte array from the given offset
+        ///     reads a double value of the byte array from the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>double value</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     double value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double ReadReal(ref byte[] bytes, int offset)
         {
@@ -195,11 +218,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a double value of the byte array from the given offset
+        ///     reads a double value of the byte array from the given offset.
         /// </summary>
-        /// <param name="src">byte pointer</param>
-        /// <param name="offset">offset</param>
-        /// <returns>double value</returns>
+        /// <param name="src">    [in,out] byte pointer. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     double value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double ReadReal(byte* src, int offset)
         {
@@ -223,11 +248,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a short value of the byte array from the given offset
+        ///     reads a short value of the byte array from the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>short value</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     short value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static short ReadInt16(ref byte[] bytes, int offset)
         {
@@ -238,11 +265,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a short value of the byte array from the given offset
+        ///     reads a short value of the byte array from the given offset.
         /// </summary>
-        /// <param name="src">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>short value</returns>
+        /// <param name="src">    [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     short value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static short ReadInt16(byte* src, int offset)
         {
@@ -250,11 +279,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a ushort value of the byte array from the given offset
+        ///     reads a ushort value of the byte array from the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>ushort value</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     ushort value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static ushort ReadUInt16(ref byte[] bytes, int offset)
         {
@@ -265,11 +296,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a ushort value of the byte array from the given offset
+        ///     reads a ushort value of the byte array from the given offset.
         /// </summary>
-        /// <param name="src">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>ushort value</returns>
+        /// <param name="src">    [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     ushort value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static ushort ReadUInt16(byte* src, int offset)
         {
@@ -277,11 +310,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a int value of the byte array from the given offset
+        ///     reads a int value of the byte array from the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>int value</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     int value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int ReadInt32(ref byte[] bytes, int offset)
         {
@@ -292,11 +327,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a int value of the byte array from the given offset
+        ///     reads a int value of the byte array from the given offset.
         /// </summary>
-        /// <param name="src">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>int value</returns>
+        /// <param name="src">    [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     int value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int ReadInt32(byte* src, int offset)
         {
@@ -304,11 +341,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a uint value of the byte array from the given offset
+        ///     reads a uint value of the byte array from the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>uint value</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     uint value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint ReadUInt32(ref byte[] bytes, int offset)
         {
@@ -319,11 +358,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a uint value of the byte array from the given offset
+        ///     reads a uint value of the byte array from the given offset.
         /// </summary>
-        /// <param name="src">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>uint value</returns>
+        /// <param name="src">    [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     uint value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint ReadUInt32(byte* src, int offset)
         {
@@ -331,11 +372,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a long value of the byte array from the given offset
+        ///     reads a long value of the byte array from the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>long value</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     long value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static long ReadInt64(ref byte[] bytes, int offset)
         {
@@ -346,11 +389,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a long value of the byte array from the given offset
+        ///     reads a long value of the byte array from the given offset.
         /// </summary>
-        /// <param name="src">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>uint value</returns>
+        /// <param name="src">    [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     uint value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static long ReadInt64(byte* src, int offset)
         {
@@ -358,11 +403,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a ulong value of the byte array from the given offset
+        ///     reads a ulong value of the byte array from the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>ulong value</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     ulong value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static ulong ReadUInt64(ref byte[] bytes, int offset)
         {
@@ -373,11 +420,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a ulong value of the byte array from the given offset
+        ///     reads a ulong value of the byte array from the given offset.
         /// </summary>
-        /// <param name="src">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>ulong value</returns>
+        /// <param name="src">    [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     ulong value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static ulong ReadUInt64(byte* src, int offset)
         {
@@ -385,11 +434,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a char value of the byte array from the given offset
+        ///     reads a char value of the byte array from the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>char value</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     char value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static char ReadChar(ref byte[] bytes, int offset)
         {
@@ -400,11 +451,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a char value of the byte array from the given offset
+        ///     reads a char value of the byte array from the given offset.
         /// </summary>
-        /// <param name="src">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>char value</returns>
+        /// <param name="src">    [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     char value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static char ReadChar(byte* src, int offset)
         {
@@ -412,11 +465,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a string value of the byte array from the given offset
+        ///     reads a string value of the byte array from the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>string value</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     string value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string ReadString(ref byte[] bytes, int offset)
         {
@@ -425,12 +480,14 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a string value of the byte array from the given offset
+        ///     reads a string value of the byte array from the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="encoding">specify the encoding to use</param>
-        /// <returns>string value</returns>
+        /// <param name="bytes">    [in,out] byte array. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="encoding"> specify the encoding to use. </param>
+        /// <returns>
+        ///     string value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string ReadString(ref byte[] bytes, int offset, Encoding encoding)
         {
@@ -439,12 +496,14 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a string value of the byte array from the given offset
+        ///     reads a string value of the byte array from the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="byteSize">out sizeof string in bytes</param>
-        /// <returns>string value</returns>
+        /// <param name="bytes">    [in,out] byte array. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="byteSize"> [out] out sizeof string in bytes. </param>
+        /// <returns>
+        ///     string value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string ReadString(ref byte[] bytes, int offset, out int byteSize)
         {
@@ -454,13 +513,15 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a string value of the byte array from the given offset
+        ///     reads a string value of the byte array from the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="encoding">specify the encoding to use</param>
-        /// <param name="byteSize">out sizeof string in bytes</param>
-        /// <returns>string value</returns>
+        /// <param name="bytes">    [in,out] byte array. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="encoding"> specify the encoding to use. </param>
+        /// <param name="byteSize"> [out] out sizeof string in bytes. </param>
+        /// <returns>
+        ///     string value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string ReadString(ref byte[] bytes, int offset, Encoding encoding, out int byteSize)
         {
@@ -470,12 +531,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a string value of the byte array from the given offset
-        ///     unicode string only!
+        ///     reads a string value of the byte array from the given offset unicode string only!
         /// </summary>
-        /// <param name="src">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>string value</returns>
+        /// <param name="src">    [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     string value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string ReadString(byte* src, int offset)
         {
@@ -484,13 +546,14 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a string value of the byte array from the given offset
-        ///     unicode string only!
+        ///     reads a string value of the byte array from the given offset unicode string only!
         /// </summary>
-        /// <param name="src">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="byteSize">out sizeof string in bytes</param>
-        /// <returns>string value</returns>
+        /// <param name="src">      [in,out] byte array. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="byteSize"> [out] out sizeof string in bytes. </param>
+        /// <returns>
+        ///     string value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string ReadString(byte* src, int offset, out int byteSize)
         {
@@ -500,13 +563,14 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a string value of the byte array from the given offset
-        ///     unicode string only!
+        ///     reads a string value of the byte array from the given offset unicode string only!
         /// </summary>
-        /// <param name="src">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="encoding">specify the encoding to use</param>
-        /// <returns>string value</returns>
+        /// <param name="src">      [in,out] byte array. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="encoding"> specify the encoding to use. </param>
+        /// <returns>
+        ///     string value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string ReadString(byte* src, int offset, Encoding encoding)
         {
@@ -515,14 +579,15 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a string value of the byte array from the given offset
-        ///     unicode string only!
+        ///     reads a string value of the byte array from the given offset unicode string only!
         /// </summary>
-        /// <param name="src">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <param name="encoding">specify the encoding to use</param>
-        /// <param name="byteSize">out sizeof string in bytes</param>
-        /// <returns>string value</returns>
+        /// <param name="src">      [in,out] byte array. </param>
+        /// <param name="offset">   offset. </param>
+        /// <param name="encoding"> specify the encoding to use. </param>
+        /// <param name="byteSize"> [out] out sizeof string in bytes. </param>
+        /// <returns>
+        ///     string value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string ReadString(byte* src, int offset, Encoding encoding, out int byteSize)
         {
@@ -532,11 +597,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a decimal value of the byte array from the given offset
+        ///     reads a decimal value of the byte array from the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>decimal value</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     decimal value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static decimal ReadDecimal(ref byte[] bytes, int offset)
         {
@@ -547,11 +614,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a decimal value of the byte array from the given offset
+        ///     reads a decimal value of the byte array from the given offset.
         /// </summary>
-        /// <param name="src">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>decimal value</returns>
+        /// <param name="src">    [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     decimal value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static decimal ReadDecimal(byte* src, int offset)
         {
@@ -559,11 +628,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a Guid value of the byte array from the given offset
+        ///     reads a Guid value of the byte array from the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>Guid value</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     Guid value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Guid ReadGuid(ref byte[] bytes, int offset)
         {
@@ -574,11 +645,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a Guid value of the byte array from the given offset
+        ///     reads a Guid value of the byte array from the given offset.
         /// </summary>
-        /// <param name="src">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>Guid value</returns>
+        /// <param name="src">    [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     Guid value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Guid ReadGuid(byte* src, int offset)
         {
@@ -586,11 +659,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a Guid value of the byte array from the given offset
+        ///     reads a Guid value of the byte array from the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>Guid value</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     Guid value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static TimeSpan ReadTimeSpan(ref byte[] bytes, int offset)
         {
@@ -601,11 +676,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a TimeSpan value of the byte array from the given offset
+        ///     reads a TimeSpan value of the byte array from the given offset.
         /// </summary>
-        /// <param name="src">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>TimeSpan value</returns>
+        /// <param name="src">    [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     TimeSpan value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static TimeSpan ReadTimeSpan(byte* src, int offset)
         {
@@ -613,11 +690,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a Guid value of the byte array from the given offset
+        ///     reads a Guid value of the byte array from the given offset.
         /// </summary>
-        /// <param name="bytes">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>Guid value</returns>
+        /// <param name="bytes">  [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     Guid value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static DateTime ReadDateTime(ref byte[] bytes, int offset)
         {
@@ -628,11 +707,13 @@ namespace Exomia.Serialization.Utils
         }
 
         /// <summary>
-        ///     reads a DateTime value of the byte array from the given offset
+        ///     reads a DateTime value of the byte array from the given offset.
         /// </summary>
-        /// <param name="src">byte array</param>
-        /// <param name="offset">offset</param>
-        /// <returns>DateTime value</returns>
+        /// <param name="src">    [in,out] byte array. </param>
+        /// <param name="offset"> offset. </param>
+        /// <returns>
+        ///     DateTime value.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static DateTime ReadDateTime(byte* src, int offset)
         {
