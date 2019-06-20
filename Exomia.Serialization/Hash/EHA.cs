@@ -1,24 +1,10 @@
-﻿#region MIT License
+﻿#region License
 
-// Copyright (c) 2018 exomia - Daniel Bätz
+// Copyright (c) 2018-2019, exomia
+// All rights reserved.
 // 
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-// 
-// The above copyright notice and this permission notice shall be included in all
-// copies or substantial portions of the Software.
-// 
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-// SOFTWARE.
+// This source code is licensed under the BSD-style license found in the
+// LICENSE file in the root directory of this source tree.
 
 #endregion
 
@@ -44,6 +30,7 @@ namespace Exomia.Serialization.Hash
         ///     The block bits.
         /// </summary>
         private const int BLOCK_BITS = 1024;
+
         /// <summary>
         ///     Size of the block.
         /// </summary>
@@ -53,10 +40,12 @@ namespace Exomia.Serialization.Hash
         ///     The hash bits.
         /// </summary>
         private const int HASH_BITS = 192;
+
         /// <summary>
         ///     Size of the hash.
         /// </summary>
         private const int HASH_SIZE = HASH_BITS / 8;
+
         /// <summary>
         ///     The hash values.
         /// </summary>
@@ -76,6 +65,7 @@ namespace Exomia.Serialization.Hash
         ///     The rounds.
         /// </summary>
         private const int ROUNDS = 4;
+
         /// <summary>
         ///     The rounds offset.
         /// </summary>
@@ -85,22 +75,27 @@ namespace Exomia.Serialization.Hash
         ///     The h 0.
         /// </summary>
         private const uint H0 = 0x209536F9;
+
         /// <summary>
         ///     The first h.
         /// </summary>
         private const uint H1 = 0x1267A4BB;
+
         /// <summary>
         ///     The second h.
         /// </summary>
         private const uint H2 = 0xEE1F88D;
+
         /// <summary>
         ///     The third h.
         /// </summary>
         private const uint H3 = 0xA4B0B65;
+
         /// <summary>
         ///     The fourth h.
         /// </summary>
         private const uint H4 = 0x350798D7;
+
         /// <summary>
         ///     The fifth h.
         /// </summary>
@@ -110,22 +105,27 @@ namespace Exomia.Serialization.Hash
         ///     The c 0.
         /// </summary>
         private const uint C0 = 0xEEBB2A29;
+
         /// <summary>
         ///     The first c.
         /// </summary>
         private const uint C1 = 0x214EE939;
+
         /// <summary>
         ///     The second c.
         /// </summary>
         private const uint C2 = 0x117DFA89;
+
         /// <summary>
         ///     The third c.
         /// </summary>
         private const uint C3 = 0xFF8F44BB;
+
         /// <summary>
         ///     The fourth c.
         /// </summary>
         private const uint C4 = 0xD28146D5;
+
         /// <summary>
         ///     The fifth c.
         /// </summary>
@@ -140,29 +140,34 @@ namespace Exomia.Serialization.Hash
         ///     The 0.
         /// </summary>
         private readonly uint _h0;
+
         /// <summary>
         ///     The first h.
         /// </summary>
         private readonly uint _h1;
+
         /// <summary>
         ///     The second h.
         /// </summary>
         private readonly uint _h2;
+
         /// <summary>
         ///     The third h.
         /// </summary>
         private readonly uint _h3;
+
         /// <summary>
         ///     The fourth h.
         /// </summary>
         private readonly uint _h4;
+
         /// <summary>
         ///     The fifth h.
         /// </summary>
         private readonly uint _h5;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="EHA"/> class.
+        ///     Initializes a new instance of the <see cref="EHA" /> class.
         /// </summary>
         /// <param name="seed"> The seed. </param>
         public EHA(long seed)
@@ -171,8 +176,8 @@ namespace Exomia.Serialization.Hash
             uint s2 = (uint)(seed >> 32);
             _h0 = s1 + H0 + R1(s1, 12);
             _h1 = s2 + H1 + R1(s1, 12);
-            _h2 = R1(s1, 30) ^ (_h0 + H2 + _h1);
-            _h3 = R1(s2, 30) ^ (_h1 + H3 + _h2);
+            _h2 = R1(s1, 30)                     ^ (_h0 + H2 + _h1);
+            _h3 = R1(s2, 30)                     ^ (_h1 + H3 + _h2);
             _h4 = (R1(_h2, 30) + ~_h0 + H4) ^ s1 ^ s2;
             _h5 = (R1(_h3, 30) + ~_h1 + H5) ^ s1 ^ s2;
         }
@@ -193,7 +198,7 @@ namespace Exomia.Serialization.Hash
             }
 
             // LESS THAN A FULL BLOCK
-            Set(ptr + size, 0, BLOCK_SIZE - size);
+            Set(ptr      + size, 0, BLOCK_SIZE - size);
             *(ptr + size + 1) = ONE;
 
             uint value = *(uint*)&size;
@@ -201,13 +206,13 @@ namespace Exomia.Serialization.Hash
             // IF WE HAVE ENOUGH SPACE
             if (size < BLOCK_SIZE - 5)
             {
-                *(uint*)(ptr + BLOCK_SIZE - 4) = value;
+                *(uint*)((ptr + BLOCK_SIZE) - 4) = value;
                 ProcessBlock(hash, (uint*)ptr);
                 return;
             }
 
             // ELSE FILL UP
-            int b = size + 5 - BLOCK_SIZE;
+            int b = (size + 5) - BLOCK_SIZE;
             for (int i = 1; i < b; i++)
             {
                 *(ptr + size + i) = (byte)(value >> ((i - 1) * 8));
@@ -248,8 +253,8 @@ namespace Exomia.Serialization.Hash
             for (int i = BLOCK_LENGTH; i < WORDS_SIZE; ++i)
             {
                 *(words + i) = R1(
-                    *(words + i - 5) ^ *(words + i - 7) ^ *(words + i - (BLOCK_LENGTH - 7)) ^
-                    *(words + i - (BLOCK_LENGTH - 3)), 1);
+                    *((words + i) - 5) ^ *((words + i) - 7) ^ *((words + i) - (BLOCK_LENGTH - 7)) ^
+                    *((words + i) - (BLOCK_LENGTH - 3)), 1);
             }
 
             // first round
@@ -334,8 +339,7 @@ namespace Exomia.Serialization.Hash
         }
 
         /// <summary>
-        ///     memset call.
-        ///     Sets the first num bytes of the block of memory pointed by ptr to the
+        ///     memset call. Sets the first num bytes of the block of memory pointed by ptr to the
         ///     specified value (interpreted as an unsigned char).
         /// </summary>
         /// <param name="dest">  [in,out] destination addr. </param>
@@ -349,8 +353,8 @@ namespace Exomia.Serialization.Hash
             "msvcrt.dll", EntryPoint = "memset", CallingConvention = CallingConvention.Cdecl, SetLastError = false)]
         private static extern void* Set(
             void* dest,
-            int value,
-            int count);
+            int   value,
+            int   count);
 
         /// <summary>
         ///     generates a hash from a given stream and returns it as a byte array.
@@ -361,15 +365,15 @@ namespace Exomia.Serialization.Hash
         /// </returns>
         public byte[] ToBytes(Stream stream)
         {
-            uint[] hash = Hash(stream);
+            uint[] hash   = Hash(stream);
             byte[] buffer = new byte[HASH_SIZE];
-            int offset = 0;
+            int    offset = 0;
             fixed (byte* ptr = buffer)
             {
                 for (int i = 0; i < HASH_VALUES; ++i)
                 {
-                    *(ptr + offset + 0) =  (byte)(hash[i] & 0xFF);
-                    *(ptr + offset + 1) =  (byte)((hash[i] >> 8) & 0xFF);
+                    *(ptr + offset + 0) =  (byte)(hash[i]         & 0xFF);
+                    *(ptr + offset + 1) =  (byte)((hash[i] >> 8)  & 0xFF);
                     *(ptr + offset + 2) =  (byte)((hash[i] >> 16) & 0xFF);
                     *(ptr + offset + 3) =  (byte)((hash[i] >> 24) & 0xFF);
                     offset              += 4;
@@ -467,7 +471,7 @@ namespace Exomia.Serialization.Hash
         /// </returns>
         private uint[] Hash(Stream stream)
         {
-            uint[] hash = new uint[HASH_VALUES] { _h0, _h1, _h2, _h3, _h4, _h5 };
+            uint[] hash  = new uint[HASH_VALUES] { _h0, _h1, _h2, _h3, _h4, _h5 };
             byte[] block = new byte[BUFFER_SIZE];
 
             fixed (byte* ptr = block)

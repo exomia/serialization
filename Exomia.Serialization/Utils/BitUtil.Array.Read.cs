@@ -1,24 +1,10 @@
-﻿#region MIT License
+﻿#region License
 
-// Copyright (c) 2018 exomia - Daniel Bätz
+// Copyright (c) 2018-2019, exomia
+// All rights reserved.
 // 
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-// 
-// The above copyright notice and this permission notice shall be included in all
-// copies or substantial portions of the Software.
-// 
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-// SOFTWARE.
+// This source code is licensed under the BSD-style license found in the
+// LICENSE file in the root directory of this source tree.
 
 #endregion
 
@@ -62,7 +48,7 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool[] ReadArrayBoolean(byte* src, int offset, out int byteSize)
         {
-            int length = ReadInt32(src, offset);
+            int    length = ReadInt32(src, offset);
             bool[] buffer = new bool[length];
             fixed (bool* dst = buffer)
             {
@@ -102,7 +88,7 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float[] ReadArraySingle(byte* src, int offset, out int byteSize)
         {
-            int length = ReadInt32(src, offset);
+            int     length = ReadInt32(src, offset);
             float[] buffer = new float[length];
             fixed (float* dst = buffer)
             {
@@ -142,7 +128,7 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double[] ReadArrayReal(byte* src, int offset, out int byteSize)
         {
-            int length = ReadInt32(src, offset);
+            int      length = ReadInt32(src, offset);
             double[] buffer = new double[length];
             fixed (double* dst = buffer)
             {
@@ -182,7 +168,7 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static short[] ReadArrayInt16(byte* src, int offset, out int byteSize)
         {
-            int length = ReadInt32(src, offset);
+            int     length = ReadInt32(src, offset);
             short[] buffer = new short[length];
             fixed (short* dst = buffer)
             {
@@ -222,7 +208,7 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static ushort[] ReadArrayUInt16(byte* src, int offset, out int byteSize)
         {
-            int length = ReadInt32(src, offset);
+            int      length = ReadInt32(src, offset);
             ushort[] buffer = new ushort[length];
             fixed (ushort* dst = buffer)
             {
@@ -262,7 +248,7 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int[] ReadArrayInt32(byte* src, int offset, out int byteSize)
         {
-            int length = ReadInt32(src, offset);
+            int   length = ReadInt32(src, offset);
             int[] buffer = new int[length];
             fixed (int* dst = buffer)
             {
@@ -302,7 +288,7 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint[] ReadArrayUInt32(byte* src, int offset, out int byteSize)
         {
-            int length = ReadInt32(src, offset);
+            int    length = ReadInt32(src, offset);
             uint[] buffer = new uint[length];
             fixed (uint* dst = buffer)
             {
@@ -342,7 +328,7 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static long[] ReadArrayInt64(byte* src, int offset, out int byteSize)
         {
-            int length = ReadInt32(src, offset);
+            int    length = ReadInt32(src, offset);
             long[] buffer = new long[length];
             fixed (long* dst = buffer)
             {
@@ -382,7 +368,7 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static ulong[] ReadArrayUInt64(byte* src, int offset, out int byteSize)
         {
-            int length = ReadInt32(src, offset);
+            int     length = ReadInt32(src, offset);
             ulong[] buffer = new ulong[length];
             fixed (ulong* dst = buffer)
             {
@@ -422,7 +408,7 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static char[] ReadArrayChar(byte* src, int offset, out int byteSize)
         {
-            int length = ReadInt32(src, offset);
+            int    length = ReadInt32(src, offset);
             char[] buffer = new char[length];
             fixed (char* dst = buffer)
             {
@@ -444,7 +430,7 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string[] ReadArrayString(ref byte[] bytes, int offset, out int byteSize)
         {
-            int length = ReadInt32(ref bytes, offset);
+            int length      = ReadInt32(ref bytes, offset);
             int startOffset = offset;
             offset += 4;
             string[] buffer = new string[length];
@@ -487,7 +473,7 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static decimal[] ReadArrayDecimal(byte* src, int offset, out int byteSize)
         {
-            int length = ReadInt32(src, offset);
+            int       length = ReadInt32(src, offset);
             decimal[] buffer = new decimal[length];
             fixed (decimal* dst = buffer)
             {
@@ -527,7 +513,7 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Guid[] ReadArrayGuid(byte* src, int offset, out int byteSize)
         {
-            int length = ReadInt32(src, offset);
+            int    length = ReadInt32(src, offset);
             Guid[] buffer = new Guid[length];
             fixed (Guid* dst = buffer)
             {
@@ -567,7 +553,7 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static TimeSpan[] ReadArrayTimeSpan(byte* src, int offset, out int byteSize)
         {
-            int length = ReadInt32(src, offset);
+            int        length = ReadInt32(src, offset);
             TimeSpan[] buffer = new TimeSpan[length];
             fixed (TimeSpan* dst = buffer)
             {
@@ -607,7 +593,7 @@ namespace Exomia.Serialization.Utils
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static DateTime[] ReadArrayDateTime(byte* src, int offset, out int byteSize)
         {
-            int length = ReadInt32(src, offset);
+            int        length = ReadInt32(src, offset);
             DateTime[] buffer = new DateTime[length];
             fixed (DateTime* dst = buffer)
             {
