@@ -3,7 +3,7 @@
     <TargetFrameworks>net471;net472;netstandard2.0;netcoreapp2.2</TargetFrameworks>
     <Authors>exomia</Authors>
     <Description>fast serialization from and to a byte array and more</Description>
-    <Copyright>Copyright © 2019 exomia</Copyright>
+	<Copyright>Copyright © $([System.DateTime]::Now.Year) exomia</Copyright>
     <Version>1.0.1.5</Version>
     <PackageLicenseUrl>https://raw.githubusercontent.com/exomia/serialization/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/exomia/serialization</PackageProjectUrl>
