@@ -99,3 +99,9 @@ static void Main(string[] args)
 	//C2B360E919359B13C8025B698F1C7BD5D1D05F3358006A04 -> 48
 }
 ```
+
+---
+## Social
+
+[![Discord](https://img.shields.io/discord/427640639732187136.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.com/invite/ZFJXe6f)
+[![Twitch](https://img.shields.io/twitch/status/exomia.svg?label=&logo=twitch&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://www.twitch.tv/exomia/about)
